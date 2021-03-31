@@ -76,6 +76,18 @@ public class InstitutoTenerifeTest {
         assertTrue(alumno.existe(nota), "La nota no existe en la lista de notas");
     }
 
+    @Test
+    public void DniValidoTest() {
+        alumno.setDni("12345678A");
+        assertTrue(alumno.getDni() == "12345678A", "El dni deberia ser valido y no lo es");
+    }
+
+    @Test
+    public void DniInvalidoTest() {
+        alumno.setDni("jk12yg");
+        assertTrue(alumno.getDni() == "jk12yg", "El dni no deberia ser valido y lo es");
+    }
+
     // Metodos y funciones privadas para los test
 
     /**
