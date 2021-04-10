@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Floristeria,es.iespuertolacruz.rubengonzalezrodriguez,PlantaException,9,0,0,0,4,0,2,0,2,0
+Floristeria,es.iespuertolacruz.rubengonzalezrodriguez,Planta,4,127,7,9,2,38,7,17,0,16
+Floristeria,es.iespuertolacruz.rubengonzalezrodriguez,GestionPlantas,27,66,2,6,8,19,5,9,3,7

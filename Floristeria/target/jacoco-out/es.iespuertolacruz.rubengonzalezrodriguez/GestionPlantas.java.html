@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestionPlantas.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Floristeria</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez</a> &gt; <span class="el_source">GestionPlantas.java</span></div><h1>GestionPlantas.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class GestionPlantas {
+
+    // Variables de clase
+
+    HashMap&lt;String, Planta&gt; plantas;
+
+    // Constructores
+
+    /**
+     * Constructor por defecto de GestionPlantas
+     */
+<span class="fc" id="L17">    public GestionPlantas() {</span>
+<span class="fc" id="L18">        plantas = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L19">    }</span>
+
+    /**
+     * Constructor con parametros de GestionPlantas
+     * 
+     * @param plantas objeto planta
+     */
+<span class="nc" id="L26">    public GestionPlantas(Map&lt;String, Planta&gt; plantas) {</span>
+<span class="nc" id="L27">        this.plantas = (HashMap&lt;String, Planta&gt;) plantas;</span>
+<span class="nc" id="L28">    }</span>
+
+    // Getter and Setter
+
+    public Map&lt;String, Planta&gt; getPlantas() {
+<span class="nc" id="L33">        return this.plantas;</span>
+    }
+
+    public void setPlantas(Map&lt;String, Planta&gt; plantas) {
+<span class="nc" id="L37">        this.plantas = (HashMap&lt;String, Planta&gt;) plantas;</span>
+<span class="nc" id="L38">    }</span>
+
+    // Metodos y funciones
+
+    /**
+     * Metodo que inserta una planta en el HashMap
+     * 
+     * @param id     de la planta
+     * @param planta planta a insertar
+     * @throws PlantaException excepcion propia de planta
+     */
+    public void insertar(String id, Planta planta) throws PlantaException {
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if (!existe(id)) {</span>
+<span class="fc" id="L51">            plantas.put(id, planta);</span>
+        } else {
+<span class="nc" id="L53">            throw new PlantaException(&quot;La planta con clave &quot; + id + &quot;ya existia en la lista&quot;);</span>
+        }
+<span class="fc" id="L55">    }</span>
+
+    /**
+     * Funcion que comprueba si existe una planta con esa clave
+     * 
+     * @param id a comprobar
+     * @return True si existe o false si no existe
+     */
+    public boolean existe(String id) {
+<span class="fc" id="L64">        return plantas.containsKey(id);</span>
+    }
+
+    /**
+     * Metodo que elimina una planta en el HashMap
+     * 
+     * @param id de la planta
+     * @throws PlantaException excepcion propia de planta
+     */
+    public void eliminar(String id) throws PlantaException {
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        if (existe(id)) {</span>
+<span class="fc" id="L75">            plantas.remove(id);</span>
+        } else {
+<span class="nc" id="L77">            throw new PlantaException(&quot;La planta con clave &quot; + id + &quot;no existia en la lista&quot;);</span>
+        }
+<span class="fc" id="L79">    }</span>
+
+    /**
+     * Funcion que busca un id y devuelve la planta
+     * 
+     * @param id de la planta a buscar
+     * @return Planta a buscar
+     */
+    public Planta buscar(String id) {
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (existe(id)) {</span>
+<span class="fc" id="L89">            return plantas.get(id);</span>
+        } else {
+<span class="fc" id="L91">            return null;</span>
+        }
+    }
+
+    /**
+     * Funcion que devuelve un string con la informacion de a planta
+     * 
+     * @param id de la planta
+     * @return String con la informacion
+     */
+    public String mostarPlanta(String id) {
+<span class="fc" id="L102">        Planta planta = buscar(id);</span>
+<span class="fc" id="L103">        return planta.toString();</span>
+    }
+
+    /**
+     * Funcion que devuelve el numero de plantas que hay
+     * 
+     * @param id de la planta
+     * @return numero de plantas
+     */
+    public int obtenerCantidad(String id) {
+<span class="fc" id="L113">        Planta planta = buscar(id);</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">        if(planta != null) {</span>
+<span class="fc" id="L115">            return planta.getArticulos();</span>
+        } else {
+<span class="fc" id="L117">            return 0;</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
