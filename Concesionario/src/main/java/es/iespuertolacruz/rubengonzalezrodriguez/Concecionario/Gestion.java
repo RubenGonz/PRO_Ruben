@@ -1,4 +1,4 @@
-package es.iespuertodelacruz.rubengonzalezrodriguez.concesionario;
+package es.iespuertolacruz.rubengonzalezrodriguez.concecionario;
 
 import es.iespuertolacruz.rubengonzalezrodriguez.elementos.Cliente;
 import es.iespuertolacruz.rubengonzalezrodriguez.elementos.Coche;

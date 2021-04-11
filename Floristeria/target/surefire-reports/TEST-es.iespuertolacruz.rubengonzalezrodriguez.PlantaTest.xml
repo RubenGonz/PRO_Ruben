@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.04" tests="15" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.007" tests="15" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.specification.version" value="11"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\admin\Desktop\Floristeria\target\test-classes;C:\Users\admin\Desktop\Floristeria\target\classes;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\admin\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\admin\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\admin\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\admin\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
+    <property name="java.class.path" value="C:\Users\admin\Desktop\Pro\PRO_Ruben\Floristeria\target\test-classes;C:\Users\admin\Desktop\Pro\PRO_Ruben\Floristeria\target\classes;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\admin\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\admin\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\admin\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\admin\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
     <property name="java.vm.vendor" value="Red Hat, Inc."/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -17,9 +17,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ES"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\java-11-openjdk-11.0.10.9-1.windows.redhat.x86_64\bin"/>
-    <property name="sun.java.command" value="C:\Users\admin\AppData\Local\Temp\surefire157621372406086675\surefirebooter603979402916385528.jar C:\Users\admin\AppData\Local\Temp\surefire157621372406086675 2021-04-11T00-36-45_204-jvmRun1 surefire10535090239705285344tmp surefire_013563284835758011940tmp"/>
+    <property name="sun.java.command" value="C:\Users\admin\AppData\Local\Temp\surefire5017696065985545704\surefirebooter1612084933449140012.jar C:\Users\admin\AppData\Local\Temp\surefire5017696065985545704 2021-04-11T12-52-53_684-jvmRun1 surefire17428638312340967406tmp surefire_018396180111410220819tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\admin\Desktop\Floristeria\target\test-classes;C:\Users\admin\Desktop\Floristeria\target\classes;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\admin\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\admin\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\admin\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\admin\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\admin\Desktop\Pro\PRO_Ruben\Floristeria\target\test-classes;C:\Users\admin\Desktop\Pro\PRO_Ruben\Floristeria\target\classes;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\admin\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\admin\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\admin\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\admin\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\admin\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\admin"/>
     <property name="user.language" value="es"/>
@@ -27,13 +27,13 @@
     <property name="java.version.date" value="2021-01-19"/>
     <property name="java.home" value="C:\Program Files\Java\java-11-openjdk-11.0.10.9-1.windows.redhat.x86_64"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\admin\Desktop\Floristeria"/>
+    <property name="basedir" value="C:\Users\admin\Desktop\Pro\PRO_Ruben\Floristeria"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\admin\AppData\Local\Temp\surefire157621372406086675\surefirebooter603979402916385528.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\admin\AppData\Local\Temp\surefire5017696065985545704\surefirebooter1612084933449140012.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.10+9-LTS"/>
@@ -48,7 +48,7 @@
     <property name="java.vendor.url.bug" value="https://bugzilla.redhat.com/enter_bug.cgi"/>
     <property name="java.io.tmpdir" value="C:\Users\admin\AppData\Local\Temp\"/>
     <property name="java.version" value="11.0.10"/>
-    <property name="user.dir" value="C:\Users\admin\Desktop\Floristeria"/>
+    <property name="user.dir" value="C:\Users\admin\Desktop\Pro\PRO_Ruben\Floristeria"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
@@ -60,19 +60,19 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="equalsIncorrectoTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.004"/>
-  <testcase name="setNombreTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.002"/>
-  <testcase name="setArticulosTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.005"/>
-  <testcase name="getPrecioBaseTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.004"/>
-  <testcase name="setprecioBaseTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.001"/>
-  <testcase name="getTamanioTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.004"/>
+  <testcase name="equalsIncorrectoTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
+  <testcase name="setNombreTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
+  <testcase name="setArticulosTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
+  <testcase name="getPrecioBaseTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
+  <testcase name="setprecioBaseTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
+  <testcase name="getTamanioTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
   <testcase name="setprecioFinalTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
   <testcase name="setIdTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
   <testcase name="getArticulosTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
-  <testcase name="getIdTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.001"/>
+  <testcase name="getIdTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
   <testcase name="toStringTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
-  <testcase name="equalsCorrectoTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.002"/>
-  <testcase name="getPrecioFinalTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.001"/>
-  <testcase name="setTamanioTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.001"/>
-  <testcase name="getNombreTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0.003"/>
+  <testcase name="equalsCorrectoTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
+  <testcase name="getPrecioFinalTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
+  <testcase name="setTamanioTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
+  <testcase name="getNombreTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.PlantaTest" time="0"/>
 </testsuite>

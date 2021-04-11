@@ -1,6 +1,6 @@
 package es.iespuertolacruz.rubengonzalezrodriguez.Test;
 
-import es.iespuertodelacruz.rubengonzalezrodriguez.concesionario.Gestion;
+import es.iespuertolacruz.rubengonzalezrodriguez.concecionario.Gestion;
 import es.iespuertolacruz.rubengonzalezrodriguez.elementos.Cliente;
 import es.iespuertolacruz.rubengonzalezrodriguez.elementos.Coche;
 
