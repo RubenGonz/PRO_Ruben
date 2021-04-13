@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Gonzalez_Rodriguez_Ruben_tarea,es.iespuertolacruz.rubengonzalezrodriguez,Main,46,0,0,0,15,0,2,0,2,0
+Gonzalez_Rodriguez_Ruben_tarea,es.iespuertolacruz.rubengonzalezrodriguez,CuentaException,9,0,0,0,4,0,2,0,2,0
+Gonzalez_Rodriguez_Ruben_tarea,es.iespuertolacruz.rubengonzalezrodriguez,Cuenta,58,0,0,0,24,0,10,0,10,0
+Gonzalez_Rodriguez_Ruben_tarea,es.iespuertolacruz.rubengonzalezrodriguez,GestionCuenta,80,0,8,0,21,0,10,0,6,0

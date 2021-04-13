@@ -13,7 +13,8 @@ public class GestionPlantasTest {
     // Variables de clase
 
     GestionPlantas plantas;
-    Planta planta1;
+    Planta planta;
+    PlantaException plantaException;
 
     // BeforeEach y AfterEach
 
@@ -22,11 +23,11 @@ public class GestionPlantasTest {
         if (plantas == null) {
             plantas = new GestionPlantas();
         }
-        planta1 = crearPlanta();
+        planta = crearPlanta();
         try {
-            plantas.insertar("Id01", planta1);
+            plantas.insertar("Id01", planta);
         } catch (PlantaException e) {
-            fail("Se ha producido un error insertardo la planta1");
+            fail("Se ha producido un error insertardo la planta");
         }
     }
 
@@ -34,7 +35,7 @@ public class GestionPlantasTest {
         try {
             plantas.eliminar("Id01");
         } catch (PlantaException e) {
-            fail("Se ha producido un error eliminando la planta1");
+            fail("Se ha producido un error eliminando la planta");
         }
     }
 
@@ -42,12 +43,12 @@ public class GestionPlantasTest {
 
     @Test
     public void existeTest() {
-        assertTrue(plantas.existe("Id01"), "La planta1 deberia existir pero no existe");
+        assertTrue(plantas.existe("Id01"), "La planta deberia existir pero no existe");
     }
 
     @Test
     public void buscarEncontradoTest() {
-        assertSame(planta1,plantas.buscar("Id01"), "La planta deberia haberse encontrado");
+        assertSame(planta,plantas.buscar("Id01"), "La planta deberia haberse encontrado");
     }
 
     @Test
@@ -70,6 +71,11 @@ public class GestionPlantasTest {
     @Test
     public void obtenerCantidadCorrectaTest() {
         assertSame(25, plantas.obtenerCantidad("Id01"), "Debería tener valor 25 pero no lo tiene");
+    }
+
+    @Test
+    public void generarExcepcionTest() {
+        assertTrue(plantaException.getMessage().contains("s"), "Hubo un problema con la generacion del mensaje de error");
     }
 
     //Funciones y metodos
