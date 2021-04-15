@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="es.iespuertolacruz.rubengonzalezrodriguez.AppTest" time="0.324" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="es.iespuertolacruz.rubengonzalezrodriguez.GestionCuentaTest" time="0.357" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ES"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/ruben/Escritorio/PRO_Ruben/Gonzalez_Rodriguez_Ruben_tarea/target/surefire/surefirebooter9183432037850170884.jar /home/ruben/Escritorio/PRO_Ruben/Gonzalez_Rodriguez_Ruben_tarea/target/surefire 2021-04-13T19-51-19_607-jvmRun1 surefire11464619943235903862tmp surefire_010424856775510273233tmp"/>
+    <property name="sun.java.command" value="/home/ruben/Escritorio/PRO_Ruben/Gonzalez_Rodriguez_Ruben_tarea/target/surefire/surefirebooter12166893390391264161.jar /home/ruben/Escritorio/PRO_Ruben/Gonzalez_Rodriguez_Ruben_tarea/target/surefire 2021-04-14T17-47-56_778-jvmRun1 surefire11849157262281554022tmp surefire_05305256417772116603tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/ruben/Escritorio/PRO_Ruben/Gonzalez_Rodriguez_Ruben_tarea/target/test-classes:/home/ruben/Escritorio/PRO_Ruben/Gonzalez_Rodriguez_Ruben_tarea/target/classes:/home/ruben/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.0/junit-jupiter-api-5.6.0.jar:/home/ruben/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/ruben/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/ruben/.m2/repository/org/junit/platform/junit-platform-commons/1.6.0/junit-platform-commons-1.6.0.jar:/home/ruben/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.6.0/junit-jupiter-params-5.6.0.jar:/home/ruben/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.0/junit-jupiter-engine-5.6.0.jar:/home/ruben/.m2/repository/org/junit/platform/junit-platform-engine/1.6.0/junit-platform-engine-1.6.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/ruben/Escritorio/PRO_Ruben/Gonzalez_Rodriguez_Ruben_tarea/target/surefire/surefirebooter9183432037850170884.jar"/>
+    <property name="surefire.real.class.path" value="/home/ruben/Escritorio/PRO_Ruben/Gonzalez_Rodriguez_Ruben_tarea/target/surefire/surefirebooter12166893390391264161.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.10+9-Ubuntu-0ubuntu1.20.04"/>
     <property name="user.name" value="ruben"/>
@@ -57,5 +57,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="es.iespuertolacruz.rubengonzalezrodriguez.AppTest" time="0.212"/>
+  <testcase name="retirarError1Test" classname="es.iespuertolacruz.rubengonzalezrodriguez.GestionCuentaTest" time="0.191"/>
+  <testcase name="retirarError2Test" classname="es.iespuertolacruz.rubengonzalezrodriguez.GestionCuentaTest" time="0.005"/>
+  <testcase name="retirarTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.GestionCuentaTest" time="0.056"/>
+  <testcase name="ingresarTest" classname="es.iespuertolacruz.rubengonzalezrodriguez.GestionCuentaTest" time="0.006"/>
+  <testcase name="ingresarError1Test" classname="es.iespuertolacruz.rubengonzalezrodriguez.GestionCuentaTest" time="0.005"/>
+  <testcase name="getGestionCuenta" classname="es.iespuertolacruz.rubengonzalezrodriguez.GestionCuentaTest" time="0.001"/>
 </testsuite>

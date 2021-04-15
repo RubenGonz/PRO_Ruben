@@ -1,13 +1,15 @@
 package es.iespuertolacruz.rubengonzalezrodriguez;
 
+import java.util.Objects;
+
 public class Cuenta {
 
     // Declaracion de variables de clase
 
     private String nombre;
     private String numero;
-    private double saldo;
-    private double tipoInteres;
+    private float saldo;
+    private float tipoInteres;
 
     //Constructores
     
@@ -28,7 +30,7 @@ public class Cuenta {
      * @param saldo de la cuenta
      * @param tipoInteres de la cuenta
      */
-    public Cuenta(String nombre, String numero, double saldo, double tipoInteres) {
+    public Cuenta(String nombre, String numero, float saldo, float tipoInteres) {
         this.nombre = nombre;
         this.numero = numero;
         this.saldo = saldo;
@@ -53,19 +55,40 @@ public class Cuenta {
         this.numero = numero;
     }
 
-    public double getSaldo() {
+    public float getSaldo() {
         return this.saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
 
-    public double getTipoInteres() {
+    public float getTipoInteres() {
         return this.tipoInteres;
     }
 
-    public void setTipoInteres(double tipoInteres) {
+    public void setTipoInteres(float tipoInteres) {
         this.tipoInteres = tipoInteres;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Cuenta)) {
+            return false;
+        }
+        Cuenta cuenta = (Cuenta) o;
+        return Objects.equals(nombre, cuenta.nombre) && Objects.equals(numero, cuenta.numero) && saldo == cuenta.saldo && tipoInteres == cuenta.tipoInteres;
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre = " + getNombre() + 
+            ", numero = " + getNumero() +
+            ", saldo = " + getSaldo() +
+            ", tipoInteres = " + getTipoInteres();
+    }
+
 }

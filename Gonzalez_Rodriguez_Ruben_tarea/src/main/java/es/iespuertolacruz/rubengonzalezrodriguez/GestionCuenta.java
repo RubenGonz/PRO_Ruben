@@ -41,7 +41,7 @@ public class GestionCuenta {
      * @param cantidad a ingresar
      * @throws Exception propia
      */
-    public void ingresar(double cantidad) throws CuentaException {
+    public void ingresar(float cantidad) throws CuentaException {
         if (cantidad >= 0) {
             cuenta.setSaldo(cuenta.getSaldo() + cantidad);
         } else {
@@ -55,13 +55,13 @@ public class GestionCuenta {
      * @param cantidad a extraer
      * @throws Exception propia
      */
-    public void retirar(double cantidad) throws CuentaException {
-        if (cantidad <= cuenta.getSaldo()) {
-            cuenta.setSaldo(cuenta.getSaldo() - cantidad);
-        } else if (cantidad > 0) {
+    public void retirar(float cantidad) throws CuentaException {
+        if (cantidad < 0) {
             throw new CuentaException("No se puede extraer cantidades negativas");
         } else if (cantidad > cuenta.getSaldo()) {
             throw new CuentaException("Su cuenta no dispone del suficiente saldo");
+        } else if (cantidad <= cuenta.getSaldo()) {
+            cuenta.setSaldo(cuenta.getSaldo() - cantidad);
         }
     }
 }
