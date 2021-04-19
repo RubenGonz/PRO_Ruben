@@ -28,6 +28,18 @@ public class NotaControllerTest {
     // Test
 
     @Test
+    public void validarNotaValidaTest() {
+        nota.setAsignatura("Programacion");
+        nota.setCalificacion(8);
+        try {
+            notaController.validarNota(nota);
+        } catch (NotaException e) {
+            assertTrue(e.getMessage().contains("Se esta validando un objeto nulo de nota"),
+                    "Deberia lanzar un mensaje de error y no lo lanza");
+        }
+    }
+
+    @Test
     public void validarNotaNulaTest() {
         try {
             notaController.validarNota(notaNula);

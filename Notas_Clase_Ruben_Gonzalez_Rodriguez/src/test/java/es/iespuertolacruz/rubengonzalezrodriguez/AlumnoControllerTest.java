@@ -1,6 +1,7 @@
 package es.iespuertolacruz.rubengonzalezrodriguez;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,9 +35,9 @@ public class AlumnoControllerTest {
         alumno.setApellido1("Gonzalez");
         alumno.setApellido2("Rodriguez");
         try {
-            assertTrue(alumnoController.validarAlumno(alumno), "El alumno deberia ser valido pero no lo es");
+            alumnoController.validarAlumno(alumno);
         } catch (AlumnoException e) {
-            e.printStackTrace();
+            fail("No se deberia llegar hasta aqui");
         } 
     }
 

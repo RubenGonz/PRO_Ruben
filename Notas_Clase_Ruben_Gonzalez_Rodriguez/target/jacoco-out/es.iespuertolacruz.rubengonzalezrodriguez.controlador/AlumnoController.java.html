@@ -17,34 +17,40 @@ public class AlumnoController {
 <span class="fc" id="L17">        alumnoModelo = new AlumnoModelo();</span>
 <span class="fc" id="L18">    }</span>
 
+    /**
+     * Metodo que valida si un alumno es valido o no
+     * 
+     * @param alumno a validar
+     * @throws AlumnoException excepcion propia
+     */
     public void validarAlumno(Alumno alumno) throws AlumnoException {
-<span class="fc" id="L21">        String mensaje = &quot;&quot;;</span>
+<span class="fc" id="L27">        String mensaje = &quot;&quot;;</span>
 
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (alumno == null) {</span>
-<span class="fc" id="L24">            mensaje = &quot;Se esta validando un objeto nulo de alumno&quot;;</span>
-<span class="fc" id="L25">            throw new AlumnoException(mensaje);</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (alumno == null) {</span>
+<span class="fc" id="L30">            mensaje = &quot;Se esta validando un objeto nulo de alumno&quot;;</span>
+<span class="fc" id="L31">            throw new AlumnoException(mensaje);</span>
         }
 
-<span class="pc bpc" id="L28" title="3 of 4 branches missed.">        if (alumno.getDni() == null || alumno.getDni().isEmpty()) {</span>
-<span class="fc" id="L29">            mensaje += &quot;El dni del alumno es nulo o vacio, &quot;;</span>
+<span class="pc bpc" id="L34" title="1 of 4 branches missed.">        if (alumno.getDni() == null || alumno.getDni().isEmpty()) {</span>
+<span class="fc" id="L35">            mensaje += &quot;El dni del alumno es nulo o vacio, &quot;;</span>
         }
 
-<span class="pc bpc" id="L32" title="3 of 4 branches missed.">        if (alumno.getNombre() == null || alumno.getNombre().isEmpty()) {</span>
-<span class="fc" id="L33">            mensaje += &quot;el nombre del alumno es nulo o vacio, &quot;;</span>
+<span class="pc bpc" id="L38" title="1 of 4 branches missed.">        if (alumno.getNombre() == null || alumno.getNombre().isEmpty()) {</span>
+<span class="fc" id="L39">            mensaje += &quot;el nombre del alumno es nulo o vacio, &quot;;</span>
         }
 
-<span class="pc bpc" id="L36" title="3 of 4 branches missed.">        if (alumno.getApellido1() == null || alumno.getApellido1().isEmpty()) {</span>
-<span class="fc" id="L37">            mensaje += &quot;el primer apellido del alumno es nulo o vacio, &quot;;</span>
+<span class="pc bpc" id="L42" title="1 of 4 branches missed.">        if (alumno.getApellido1() == null || alumno.getApellido1().isEmpty()) {</span>
+<span class="fc" id="L43">            mensaje += &quot;el primer apellido del alumno es nulo o vacio, &quot;;</span>
         }
 
-<span class="pc bpc" id="L40" title="3 of 4 branches missed.">        if (alumno.getApellido2() == null || alumno.getApellido2().isEmpty()) {</span>
-<span class="fc" id="L41">            mensaje += &quot;el segundo apellido del alumno es nulo o vacio.&quot;;</span>
+<span class="pc bpc" id="L46" title="1 of 4 branches missed.">        if (alumno.getApellido2() == null || alumno.getApellido2().isEmpty()) {</span>
+<span class="fc" id="L47">            mensaje += &quot;el segundo apellido del alumno es nulo o vacio.&quot;;</span>
         }
 
-<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (!mensaje.isEmpty()) {</span>
-<span class="fc" id="L45">            throw new AlumnoException(mensaje);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (!mensaje.isEmpty()) {</span>
+<span class="fc" id="L51">            throw new AlumnoException(mensaje);</span>
         }
-<span class="nc" id="L47">    }</span>
+<span class="fc" id="L53">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
