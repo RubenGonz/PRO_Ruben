@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlumnoController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Notas_Clase_Ruben_Gonzalez_Rodriguez</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.controlador</a> &gt; <span class="el_source">AlumnoController.java</span></div><h1>AlumnoController.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.controlador;
+
+import es.iespuertolacruz.rubengonzalezrodriguez.api.Alumno;
+import es.iespuertolacruz.rubengonzalezrodriguez.excepcion.AlumnoException;
+import es.iespuertolacruz.rubengonzalezrodriguez.modelo.AlumnoModelo;
+
+public class AlumnoController {
+
+    // Variables de clase
+
+    AlumnoModelo alumnoModelo;
+
+    /**
+     * Constructor por defecto con alumnoModelo inicializado
+     */
+<span class="fc" id="L16">    public AlumnoController() {</span>
+<span class="fc" id="L17">        alumnoModelo = new AlumnoModelo();</span>
+<span class="fc" id="L18">    }</span>
+
+    public void validarAlumno(Alumno alumno) throws AlumnoException {
+<span class="fc" id="L21">        String mensaje = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (alumno == null) {</span>
+<span class="fc" id="L24">            mensaje = &quot;Se esta validando un objeto nulo de alumno&quot;;</span>
+<span class="fc" id="L25">            throw new AlumnoException(mensaje);</span>
+        }
+
+<span class="pc bpc" id="L28" title="3 of 4 branches missed.">        if (alumno.getDni() == null || alumno.getDni().isEmpty()) {</span>
+<span class="fc" id="L29">            mensaje += &quot;El dni del alumno es nulo o vacio, &quot;;</span>
+        }
+
+<span class="pc bpc" id="L32" title="3 of 4 branches missed.">        if (alumno.getNombre() == null || alumno.getNombre().isEmpty()) {</span>
+<span class="fc" id="L33">            mensaje += &quot;el nombre del alumno es nulo o vacio, &quot;;</span>
+        }
+
+<span class="pc bpc" id="L36" title="3 of 4 branches missed.">        if (alumno.getApellido1() == null || alumno.getApellido1().isEmpty()) {</span>
+<span class="fc" id="L37">            mensaje += &quot;el primer apellido del alumno es nulo o vacio, &quot;;</span>
+        }
+
+<span class="pc bpc" id="L40" title="3 of 4 branches missed.">        if (alumno.getApellido2() == null || alumno.getApellido2().isEmpty()) {</span>
+<span class="fc" id="L41">            mensaje += &quot;el segundo apellido del alumno es nulo o vacio.&quot;;</span>
+        }
+
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (!mensaje.isEmpty()) {</span>
+<span class="fc" id="L45">            throw new AlumnoException(mensaje);</span>
+        }
+<span class="nc" id="L47">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
