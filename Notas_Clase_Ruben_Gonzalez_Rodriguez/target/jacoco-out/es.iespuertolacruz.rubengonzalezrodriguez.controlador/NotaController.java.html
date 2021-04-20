@@ -2,40 +2,36 @@
 
 import es.iespuertolacruz.rubengonzalezrodriguez.api.Nota;
 import es.iespuertolacruz.rubengonzalezrodriguez.excepcion.NotaException;
-import es.iespuertolacruz.rubengonzalezrodriguez.modelo.NotaModelo;
 
-public class NotaController {
+<span class="fc" id="L6">public class NotaController {</span>
 
     // Variables de clase
 
-    NotaModelo notaModelo;
-
+    
     /**
      * Constructor por defecto con notaModelo inicializada
      */
-<span class="fc" id="L16">    public NotaController() {</span>
-<span class="fc" id="L17">        notaModelo = new NotaModelo();</span>
-<span class="fc" id="L18">    }</span>
 
     public void validarNota(Nota nota) throws NotaException {
-<span class="fc" id="L21">        String mensaje = &quot;&quot;;</span>
+<span class="fc" id="L16">        String mensaje = &quot;&quot;;</span>
 
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (nota == null) {</span>
-<span class="fc" id="L24">            mensaje = &quot;Se esta validando un objeto nulo de nota&quot;;</span>
-<span class="fc" id="L25">            throw new NotaException(mensaje);</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (nota == null) {</span>
+<span class="fc" id="L19">            mensaje = &quot;Se esta validando un objeto nulo de nota&quot;;</span>
+<span class="fc" id="L20">            throw new NotaException(mensaje);</span>
         }
 
-<span class="pc bpc" id="L28" title="1 of 4 branches missed.">        if (nota.getAsignatura() == null || nota.getAsignatura().isEmpty()) {</span>
-<span class="fc" id="L29">            mensaje += &quot;La asignatura de la nota es nula o vacia, &quot;;</span>
+<span class="pc bpc" id="L23" title="1 of 4 branches missed.">        if (nota.getAsignatura() == null || nota.getAsignatura().isEmpty()) {</span>
+<span class="fc" id="L24">            mensaje += &quot;La asignatura de la nota es nula o vacia, &quot;;</span>
         }
 
-<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (nota.getCalificacion() &lt;= 0) {</span>
-<span class="fc" id="L33">            mensaje += &quot;la calificacion es 0 o menor.&quot;;</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (nota.getCalificacion() &lt;= 0) {</span>
+<span class="fc" id="L28">            mensaje += &quot;la calificacion es 0 o menor.&quot;;</span>
         }
 
-<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (!mensaje.isEmpty()) {</span>
-<span class="fc" id="L37">            throw new NotaException(mensaje);</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (!mensaje.isEmpty()) {</span>
+<span class="fc" id="L32">            throw new NotaException(mensaje);</span>
         }
-<span class="fc" id="L39">    }</span>
+<span class="fc" id="L34">    }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

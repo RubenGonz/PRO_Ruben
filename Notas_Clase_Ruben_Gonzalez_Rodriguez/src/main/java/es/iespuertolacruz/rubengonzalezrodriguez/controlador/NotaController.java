@@ -2,20 +2,15 @@ package es.iespuertolacruz.rubengonzalezrodriguez.controlador;
 
 import es.iespuertolacruz.rubengonzalezrodriguez.api.Nota;
 import es.iespuertolacruz.rubengonzalezrodriguez.excepcion.NotaException;
-import es.iespuertolacruz.rubengonzalezrodriguez.modelo.NotaModelo;
 
 public class NotaController {
 
     // Variables de clase
 
-    NotaModelo notaModelo;
-
+    
     /**
      * Constructor por defecto con notaModelo inicializada
      */
-    public NotaController() {
-        notaModelo = new NotaModelo();
-    }
 
     public void validarNota(Nota nota) throws NotaException {
         String mensaje = "";
@@ -37,4 +32,5 @@ public class NotaController {
             throw new NotaException(mensaje);
         }
     }
+
 }

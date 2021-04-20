@@ -2,6 +2,8 @@ package es.iespuertolacruz.rubengonzalezrodriguez.api;
 
 import java.util.Objects;
 
+import es.iespuertolacruz.rubengonzalezrodriguez.modelo.NotasModelo;
+
 /**
  * Clase Alumno que contiene las cualidades de alumno
  */
@@ -13,6 +15,7 @@ public class Alumno {
     String nombre;
     String apellido1;
     String apellido2;
+    NotasModelo notas;
 
     //Constructores
 

@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NotasModelo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Notas_Clase_Ruben_Gonzalez_Rodriguez</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.modelo</a> &gt; <span class="el_source">NotasModelo.java</span></div><h1>NotasModelo.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.modelo;
 
-<span class="nc" id="L3">public class NotasModelo {</span>
-    
+import java.util.HashMap;
+
+import es.iespuertolacruz.rubengonzalezrodriguez.api.Nota;
+
+public class NotasModelo {
+
+    // Variables de clase
+
+    Nota nota;
+    HashMap&lt;String, Nota&gt; notas;
+
+    // Constructores
+
+    /**
+     * Constructor por defecto de AlumnosModelo
+     */
+<span class="fc" id="L19">    public NotasModelo() {</span>
+<span class="fc" id="L20">        notas = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L21">    }</span>
+
+    // Metodos y funciones
+
+    /**
+     * Metodo que inserta una nota en la lista de notas
+     * 
+     * @param nota a insertar
+     */
+    public void insertar(Nota nota) {
+<span class="fc" id="L31">        notas.put(nota.getAsignatura(), nota);</span>
+<span class="fc" id="L32">    }</span>
+
+    /**
+     * Metodo que elimina a una nota de la lista de notas
+     * 
+     * @param nota a eliminar
+     */
+    public void eliminar(Nota nota) {
+<span class="fc" id="L40">        notas.remove(nota.getAsignatura());</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * Funcion que devuelve una nota buscada por el nombre de la asignatura
+     * 
+     * @param asignatura a buscar
+     */
+    public Nota buscar(String asignatura) {
+<span class="fc" id="L49">        nota = notas.get(asignatura);</span>
+<span class="fc" id="L50">        return nota;</span>
+    }
+
+    /**
+     * Funcion que comprueba si existe una nota
+     * 
+     * @param nota a verificar
+     * @return true si existe o false si no existe
+     */
+    public boolean existe(Nota nota) {
+        Nota notaAencontrar;
+<span class="fc" id="L61">        notaAencontrar = buscar(nota.getAsignatura());</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        return notaAencontrar != null;</span>
+    }
+
+    /**
+     * Funcion que muestra el contenido de la lista
+     * 
+     * @return String con los elementos
+     */
+    public String mostrarLista() {
+<span class="fc" id="L71">        return notas.toString();</span>
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

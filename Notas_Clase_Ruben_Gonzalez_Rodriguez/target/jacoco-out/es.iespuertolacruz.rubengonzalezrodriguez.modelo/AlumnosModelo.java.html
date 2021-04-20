@@ -28,8 +28,8 @@ public class AlumnosModelo {
      * @param alumno a insertar
      */
     public void insertar(Alumno alumno) {
-<span class="nc" id="L31">        alumnos.put(alumno.getDni(), alumno);</span>
-<span class="nc" id="L32">    }</span>
+<span class="fc" id="L31">        alumnos.put(alumno.getDni(), alumno);</span>
+<span class="fc" id="L32">    }</span>
 
     /**
      * Metodo que elimina a un alumno de la lista
@@ -37,8 +37,8 @@ public class AlumnosModelo {
      * @param alumno a eliminar
      */
     public void eliminar(Alumno alumno) {
-<span class="nc" id="L40">        alumnos.remove(alumno.getDni());</span>
-<span class="nc" id="L41">    }</span>
+<span class="fc" id="L40">        alumnos.remove(alumno.getDni());</span>
+<span class="fc" id="L41">    }</span>
 
     /**
      * Funcion que devuelve un alumno buscado por su dni
@@ -46,8 +46,8 @@ public class AlumnosModelo {
      * @param dni a buscar del alumno
      */
     public Alumno buscar(String dni) {
-<span class="nc" id="L49">        alumno = alumnos.get(dni);</span>
-<span class="nc" id="L50">        return alumno;</span>
+<span class="fc" id="L49">        alumno = alumnos.get(dni);</span>
+<span class="fc" id="L50">        return alumno;</span>
     }
 
     /**
@@ -58,8 +58,8 @@ public class AlumnosModelo {
      */
     public boolean existe(Alumno alumno) {
         Alumno alumnoAencontrar;
-<span class="nc" id="L61">        alumnoAencontrar = buscar(alumno.getDni());</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">        return alumnoAencontrar != null;</span>
+<span class="fc" id="L61">        alumnoAencontrar = buscar(alumno.getDni());</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        return alumnoAencontrar != null;</span>
     }
 
     /**
@@ -68,7 +68,7 @@ public class AlumnosModelo {
      * @return String con los elementos
      */
     public String mostrarLista() {
-<span class="nc" id="L71">        return alumnos.toString();</span>
+<span class="fc" id="L71">        return alumnos.toString();</span>
     }
 
 }
