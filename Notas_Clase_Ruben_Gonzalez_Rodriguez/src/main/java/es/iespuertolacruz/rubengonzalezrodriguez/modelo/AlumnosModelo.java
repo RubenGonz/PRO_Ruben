@@ -3,13 +3,17 @@ package es.iespuertolacruz.rubengonzalezrodriguez.modelo;
 import java.util.HashMap;
 
 import es.iespuertolacruz.rubengonzalezrodriguez.api.Alumno;
+import es.iespuertolacruz.rubengonzalezrodriguez.controlador.AlumnoController;
+import es.iespuertolacruz.rubengonzalezrodriguez.excepcion.AlumnoException;
 
 public class AlumnosModelo {
 
     // Variables de clase
 
+    private static final String EL_ALUMNO_INDICADO_NO_EXISTE = "El alumno indicado no existe";
     Alumno alumno;
     HashMap<String, Alumno> alumnos;
+    AlumnoController alumnoController;
 
     // Constructores
 
@@ -23,23 +27,32 @@ public class AlumnosModelo {
     // Metodos y funciones
 
     /**
-     * Metodo que inserta un alumno en la lista de alumnos
+     * Metodo encargado de insertar un alumno en la lista de alumnos
      * 
      * @param alumno a insertar
+     * @throws AlumnoException con mensaje controlado
      */
-    public void insertar(Alumno alumno) {
+    public void insertar(Alumno alumno) throws AlumnoException {
+        if (existe(alumno)) {
+            throw new AlumnoException("El alumno indicado ya existe");
+        }
         alumnos.put(alumno.getDni(), alumno);
     }
 
     /**
-     * Metodo que elimina a un alumno de la lista
+     * Metodo encargado de eliminar un alumno en la lista de alumnos por el dni
      * 
-     * @param alumno a eliminar
+     * @param dni del alumno
+     * @throws AlumnoException con mensaje controlado
      */
-    public void eliminar(Alumno alumno) {
+    public void eliminar(String dni) throws AlumnoException {
+        alumno = buscar(dni);
+        if (alumno == null) {
+            throw new AlumnoException(EL_ALUMNO_INDICADO_NO_EXISTE);
+        }
         alumnos.remove(alumno.getDni());
     }
-
+    
     /**
      * Funcion que devuelve un alumno buscado por su dni
      * 

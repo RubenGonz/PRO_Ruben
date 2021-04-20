@@ -26,18 +26,19 @@ public class Alumno {
     }
 
     /**
-     * Constructor de alumno con todos los parametros
      * 
      * @param dni del alumno
      * @param nombre del alumno
      * @param apellido1 del alumno
      * @param apellido2 del alumno
+     * @param notas del alumno
      */
-    public Alumno(String dni, String nombre, String apellido1, String apellido2) {
+    public Alumno(String dni, String nombre, String apellido1, String apellido2, NotasModelo notas) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
+        this.notas = notas;
     }
 
     //Getters y Setters
@@ -74,6 +75,14 @@ public class Alumno {
         this.apellido2 = apellido2;
     }
 
+    public NotasModelo getNotas() {
+        return this.notas;
+    }
+
+    public void setNotas(NotasModelo notas) {
+        this.notas = notas;
+    }
+
     //Metodos y funciones
 
     @Override
@@ -93,7 +102,7 @@ public class Alumno {
         return "Dni = " + getDni() +
             ", nombre = " + getNombre() +
             ", apellido1 = " + getApellido1() +
-            ", apellido2 = " + getApellido2();
+            ", apellido2 = " + getApellido2() +
+            ", notas = " + getNotas();
     }
-    
 }

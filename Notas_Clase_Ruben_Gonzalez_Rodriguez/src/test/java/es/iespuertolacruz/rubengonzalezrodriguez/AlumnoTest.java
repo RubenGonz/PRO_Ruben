@@ -32,7 +32,7 @@ public class AlumnoTest {
 
     @Test
     public void toStringTest() {
-        assertEquals("Dni = 43378653D, nombre = Ruben, apellido1 = Gonzalez, apellido2 = Rodriguez",
+        assertEquals("Dni = 43378653D, nombre = Ruben, apellido1 = Gonzalez, apellido2 = Rodriguez, notas = null",
                 alumno1.toString(), "El toString no funciona como deberia");
     }
 
@@ -44,10 +44,11 @@ public class AlumnoTest {
         alumno.setNombre("Ruben");
         alumno.setApellido1("Gonzalez");
         alumno.setApellido2("Rodriguez");
+        alumno.setNotas(null);
         return alumno;
     }
 
     private Alumno crearAlumno2() {
-        return new Alumno("43378653D", "Ruben", "Gonzalez", "Rodriguez");
+        return new Alumno("43378653D", "Ruben", "Gonzalez", "Rodriguez", null);
     }
 }

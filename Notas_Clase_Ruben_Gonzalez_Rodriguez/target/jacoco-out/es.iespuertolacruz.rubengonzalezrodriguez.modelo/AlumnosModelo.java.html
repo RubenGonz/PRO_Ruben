@@ -3,51 +3,64 @@
 import java.util.HashMap;
 
 import es.iespuertolacruz.rubengonzalezrodriguez.api.Alumno;
+import es.iespuertolacruz.rubengonzalezrodriguez.controlador.AlumnoController;
+import es.iespuertolacruz.rubengonzalezrodriguez.excepcion.AlumnoException;
 
 public class AlumnosModelo {
 
     // Variables de clase
 
+    private static final String EL_ALUMNO_INDICADO_NO_EXISTE = &quot;El alumno indicado no existe&quot;;
     Alumno alumno;
     HashMap&lt;String, Alumno&gt; alumnos;
+    AlumnoController alumnoController;
 
     // Constructores
 
     /**
      * Constructor por defecto de AlumnosModelo
      */
-<span class="fc" id="L19">    public AlumnosModelo() {</span>
-<span class="fc" id="L20">        alumnos = new HashMap&lt;&gt;();</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc" id="L23">    public AlumnosModelo() {</span>
+<span class="fc" id="L24">        alumnos = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L25">    }</span>
 
     // Metodos y funciones
 
     /**
-     * Metodo que inserta un alumno en la lista de alumnos
+     * Metodo encargado de insertar un alumno en la lista de alumnos
      * 
      * @param alumno a insertar
+     * @throws AlumnoException con mensaje controlado
      */
-    public void insertar(Alumno alumno) {
-<span class="fc" id="L31">        alumnos.put(alumno.getDni(), alumno);</span>
-<span class="fc" id="L32">    }</span>
+    public void insertar(Alumno alumno) throws AlumnoException {
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        if (existe(alumno)) {</span>
+<span class="nc" id="L37">            throw new AlumnoException(&quot;El alumno indicado ya existe&quot;);</span>
+        }
+<span class="fc" id="L39">        alumnos.put(alumno.getDni(), alumno);</span>
+<span class="fc" id="L40">    }</span>
 
     /**
-     * Metodo que elimina a un alumno de la lista
+     * Metodo encargado de eliminar un alumno en la lista de alumnos por el dni
      * 
-     * @param alumno a eliminar
+     * @param dni del alumno
+     * @throws AlumnoException con mensaje controlado
      */
-    public void eliminar(Alumno alumno) {
-<span class="fc" id="L40">        alumnos.remove(alumno.getDni());</span>
-<span class="fc" id="L41">    }</span>
-
+    public void eliminar(String dni) throws AlumnoException {
+<span class="fc" id="L49">        alumno = buscar(dni);</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if (alumno == null) {</span>
+<span class="nc" id="L51">            throw new AlumnoException(EL_ALUMNO_INDICADO_NO_EXISTE);</span>
+        }
+<span class="fc" id="L53">        alumnos.remove(alumno.getDni());</span>
+<span class="fc" id="L54">    }</span>
+    
     /**
      * Funcion que devuelve un alumno buscado por su dni
      * 
      * @param dni a buscar del alumno
      */
     public Alumno buscar(String dni) {
-<span class="fc" id="L49">        alumno = alumnos.get(dni);</span>
-<span class="fc" id="L50">        return alumno;</span>
+<span class="fc" id="L62">        alumno = alumnos.get(dni);</span>
+<span class="fc" id="L63">        return alumno;</span>
     }
 
     /**
@@ -58,8 +71,8 @@ public class AlumnosModelo {
      */
     public boolean existe(Alumno alumno) {
         Alumno alumnoAencontrar;
-<span class="fc" id="L61">        alumnoAencontrar = buscar(alumno.getDni());</span>
-<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        return alumnoAencontrar != null;</span>
+<span class="fc" id="L74">        alumnoAencontrar = buscar(alumno.getDni());</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        return alumnoAencontrar != null;</span>
     }
 
     /**
@@ -68,7 +81,7 @@ public class AlumnosModelo {
      * @return String con los elementos
      */
     public String mostrarLista() {
-<span class="fc" id="L71">        return alumnos.toString();</span>
+<span class="fc" id="L84">        return alumnos.toString();</span>
     }
 
 }
