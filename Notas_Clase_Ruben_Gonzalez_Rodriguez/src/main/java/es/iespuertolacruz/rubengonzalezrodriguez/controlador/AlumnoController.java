@@ -2,19 +2,20 @@ package es.iespuertolacruz.rubengonzalezrodriguez.controlador;
 
 import es.iespuertolacruz.rubengonzalezrodriguez.api.Alumno;
 import es.iespuertolacruz.rubengonzalezrodriguez.excepcion.AlumnoException;
-import es.iespuertolacruz.rubengonzalezrodriguez.modelo.AlumnoModelo;
+import es.iespuertolacruz.rubengonzalezrodriguez.modelo.AlumnosModelo;
 
 public class AlumnoController {
 
     // Variables de clase
 
-    AlumnoModelo alumnoModelo;
+    private static final String EL_ALUMNO_INDICADO_NO_EXISTE = "El alumno indicado no existe";
+    AlumnosModelo alumnosModelo;
 
     /**
      * Constructor por defecto con alumnoModelo inicializado
      */
     public AlumnoController() {
-        alumnoModelo = new AlumnoModelo();
+        alumnosModelo = new AlumnosModelo();
     }
 
     /**
@@ -53,74 +54,75 @@ public class AlumnoController {
     }
 
     /**
-     * Metodo encargado de insertar una 
+     * Metodo encargado de insertar un alumno en la lista de alumnos
      * 
-     * @param fruta a insertar
-     * @throws FrutaException con mensaje controlado
+     * @param alumno a insertar
+     * @throws AlumnoException con mensaje controlado
      */
-    public void insertar(Fruta fruta) throws FrutaException {
-        validarFruta(fruta);
-        if (existe(fruta)) {
-            throw new FrutaException("La fruta indicada ya existe");
+    public void insertar(Alumno alumno) throws AlumnoException {
+        validarAlumno(alumno);
+        if (existe(alumno)) {
+            throw new AlumnoException("El alumno indicado ya existe");
         }
-        frutaModelo.insertar(fruta);
+        alumnosModelo.insertar(alumno);
     }
 
     /**
-     * Metodo encargado de eliminar
+     * Metodo encargado de eliminar un alumno en la lista de alumnos por el alumno
      * 
      * @param fruta a eliminar
-     * @throws FrutaException
+     * @throws AlumnoException con mensaje controlado
      */
-    public void eliminar(Fruta fruta) throws FrutaException {
-        validarFruta(fruta);
-        if (!existe(fruta)) {
-            throw new FrutaException("La fruta indicada NO existe");
+    public void eliminar(Alumno alumno) throws AlumnoException {
+        validarAlumno(alumno);
+        if (!existe(alumno)) {
+            throw new AlumnoException(EL_ALUMNO_INDICADO_NO_EXISTE);
         }
-        frutaModelo.eliminar(fruta);
-    }
-
-    public void eliminar(String identificador) throws FrutaException {
-        Fruta fruta;
-        fruta = buscar(identificador);
-        if (fruta == null) {
-            throw new FrutaException("La fruta indicada NO existe");
-        }
-        frutaModelo.eliminar(fruta);
+        alumnosModelo.eliminar(alumno);
     }
 
     /**
-     * Metodo encargado de buscar por identificador
+     * Metodo encargado de eliminar un alumno en la lista de alumnos por el dni
      * 
-     * @param identificador para localizar la fruta
-     * @return fruta a traves del identificador
+     * @param dni del alumno
+     * @throws AlumnoException con mensaje controlado
      */
-    public Fruta buscar(String identificador) {
-        Fruta fruta = null;
-        fruta = frutaModelo.buscar(identificador);
-        return fruta;
-    }
-
-    public void modificar(Fruta fruta) {
-        // lo que sea
+    public void eliminar(String dni) throws AlumnoException {
+        Alumno alumno;
+        alumno = buscar(dni);
+        if (alumno == null) {
+            throw new AlumnoException(EL_ALUMNO_INDICADO_NO_EXISTE);
+        }
+        alumnosModelo.eliminar(alumno);
     }
 
     /**
-     * Funcion encargada de verificar si existe la fruta
+     * Funcion encargada de buscar un alumno en la lista de alumnos por el dni
      * 
-     * @param fruta a encontrar
-     * @return true/false
+     * @param dni del alumno
+     * @return alumno encontrado o null si no esta
      */
-    private boolean existe(Fruta fruta) {
-        boolean encontrada = false;
-        Fruta frutaEncontrada;
+    public Alumno buscar(String dni) {
+        Alumno alumno = null;
+        alumno = alumnosModelo.buscar(dni);
+        return alumno;
+    }
 
-        frutaEncontrada = buscar(fruta.getIdentificador());
-        if (frutaEncontrada != null) {
-            encontrada = true;
+    /**
+     * Funcion encargada de verificar si existe el alumno
+     * 
+     * @param alumno a comprobar
+     * @return true si existe o false si no existe
+     */
+    public boolean existe(Alumno alumno) {
+        boolean encontrado = false;
+        Alumno alumnoEncontrado;
+
+        alumnoEncontrado = buscar(alumno.getDni());
+        if (alumnoEncontrado != null) {
+            encontrado = true;
         }
-
-        return encontrada;
+        return encontrado;
     }
 
 }

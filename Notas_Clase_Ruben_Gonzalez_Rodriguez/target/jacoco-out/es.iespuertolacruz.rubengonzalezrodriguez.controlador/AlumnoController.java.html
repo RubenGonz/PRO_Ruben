@@ -2,20 +2,21 @@
 
 import es.iespuertolacruz.rubengonzalezrodriguez.api.Alumno;
 import es.iespuertolacruz.rubengonzalezrodriguez.excepcion.AlumnoException;
-import es.iespuertolacruz.rubengonzalezrodriguez.modelo.AlumnoModelo;
+import es.iespuertolacruz.rubengonzalezrodriguez.modelo.AlumnosModelo;
 
 public class AlumnoController {
 
     // Variables de clase
 
-    AlumnoModelo alumnoModelo;
+    private static final String EL_ALUMNO_INDICADO_NO_EXISTE = &quot;El alumno indicado no existe&quot;;
+    AlumnosModelo alumnosModelo;
 
     /**
      * Constructor por defecto con alumnoModelo inicializado
      */
-<span class="fc" id="L16">    public AlumnoController() {</span>
-<span class="fc" id="L17">        alumnoModelo = new AlumnoModelo();</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L17">    public AlumnoController() {</span>
+<span class="fc" id="L18">        alumnosModelo = new AlumnosModelo();</span>
+<span class="fc" id="L19">    }</span>
 
     /**
      * Metodo que valida si un alumno es valido o no
@@ -24,33 +25,105 @@ public class AlumnoController {
      * @throws AlumnoException excepcion propia
      */
     public void validarAlumno(Alumno alumno) throws AlumnoException {
-<span class="fc" id="L27">        String mensaje = &quot;&quot;;</span>
+<span class="fc" id="L28">        String mensaje = &quot;&quot;;</span>
 
-<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (alumno == null) {</span>
-<span class="fc" id="L30">            mensaje = &quot;Se esta validando un objeto nulo de alumno&quot;;</span>
-<span class="fc" id="L31">            throw new AlumnoException(mensaje);</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (alumno == null) {</span>
+<span class="fc" id="L31">            mensaje = &quot;Se esta validando un objeto nulo de alumno&quot;;</span>
+<span class="fc" id="L32">            throw new AlumnoException(mensaje);</span>
         }
 
-<span class="pc bpc" id="L34" title="1 of 4 branches missed.">        if (alumno.getDni() == null || alumno.getDni().isEmpty()) {</span>
-<span class="fc" id="L35">            mensaje += &quot;El dni del alumno es nulo o vacio, &quot;;</span>
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">        if (alumno.getDni() == null || alumno.getDni().isEmpty()) {</span>
+<span class="fc" id="L36">            mensaje += &quot;El dni del alumno es nulo o vacio, &quot;;</span>
         }
 
-<span class="pc bpc" id="L38" title="1 of 4 branches missed.">        if (alumno.getNombre() == null || alumno.getNombre().isEmpty()) {</span>
-<span class="fc" id="L39">            mensaje += &quot;el nombre del alumno es nulo o vacio, &quot;;</span>
+<span class="pc bpc" id="L39" title="1 of 4 branches missed.">        if (alumno.getNombre() == null || alumno.getNombre().isEmpty()) {</span>
+<span class="fc" id="L40">            mensaje += &quot;el nombre del alumno es nulo o vacio, &quot;;</span>
         }
 
-<span class="pc bpc" id="L42" title="1 of 4 branches missed.">        if (alumno.getApellido1() == null || alumno.getApellido1().isEmpty()) {</span>
-<span class="fc" id="L43">            mensaje += &quot;el primer apellido del alumno es nulo o vacio, &quot;;</span>
+<span class="pc bpc" id="L43" title="1 of 4 branches missed.">        if (alumno.getApellido1() == null || alumno.getApellido1().isEmpty()) {</span>
+<span class="fc" id="L44">            mensaje += &quot;el primer apellido del alumno es nulo o vacio, &quot;;</span>
         }
 
-<span class="pc bpc" id="L46" title="1 of 4 branches missed.">        if (alumno.getApellido2() == null || alumno.getApellido2().isEmpty()) {</span>
-<span class="fc" id="L47">            mensaje += &quot;el segundo apellido del alumno es nulo o vacio.&quot;;</span>
+<span class="pc bpc" id="L47" title="1 of 4 branches missed.">        if (alumno.getApellido2() == null || alumno.getApellido2().isEmpty()) {</span>
+<span class="fc" id="L48">            mensaje += &quot;el segundo apellido del alumno es nulo o vacio.&quot;;</span>
         }
 
-<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (!mensaje.isEmpty()) {</span>
-<span class="fc" id="L51">            throw new AlumnoException(mensaje);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if (!mensaje.isEmpty()) {</span>
+<span class="fc" id="L52">            throw new AlumnoException(mensaje);</span>
         }
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L54">    }</span>
+
+    /**
+     * Metodo encargado de insertar un alumno en la lista de alumnos
+     * 
+     * @param alumno a insertar
+     * @throws AlumnoException con mensaje controlado
+     */
+    public void insertar(Alumno alumno) throws AlumnoException {
+<span class="nc" id="L63">        validarAlumno(alumno);</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        if (existe(alumno)) {</span>
+<span class="nc" id="L65">            throw new AlumnoException(&quot;El alumno indicado ya existe&quot;);</span>
+        }
+<span class="nc" id="L67">        alumnosModelo.insertar(alumno);</span>
+<span class="nc" id="L68">    }</span>
+
+    /**
+     * Metodo encargado de eliminar un alumno en la lista de alumnos por el alumno
+     * 
+     * @param fruta a eliminar
+     * @throws AlumnoException con mensaje controlado
+     */
+    public void eliminar(Alumno alumno) throws AlumnoException {
+<span class="nc" id="L77">        validarAlumno(alumno);</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        if (!existe(alumno)) {</span>
+<span class="nc" id="L79">            throw new AlumnoException(EL_ALUMNO_INDICADO_NO_EXISTE);</span>
+        }
+<span class="nc" id="L81">        alumnosModelo.eliminar(alumno);</span>
+<span class="nc" id="L82">    }</span>
+
+    /**
+     * Metodo encargado de eliminar un alumno en la lista de alumnos por el dni
+     * 
+     * @param dni del alumno
+     * @throws AlumnoException con mensaje controlado
+     */
+    public void eliminar(String dni) throws AlumnoException {
+        Alumno alumno;
+<span class="nc" id="L92">        alumno = buscar(dni);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        if (alumno == null) {</span>
+<span class="nc" id="L94">            throw new AlumnoException(EL_ALUMNO_INDICADO_NO_EXISTE);</span>
+        }
+<span class="nc" id="L96">        alumnosModelo.eliminar(alumno);</span>
+<span class="nc" id="L97">    }</span>
+
+    /**
+     * Funcion encargada de buscar un alumno en la lista de alumnos por el dni
+     * 
+     * @param dni del alumno
+     * @return alumno encontrado o null si no esta
+     */
+    public Alumno buscar(String dni) {
+<span class="nc" id="L106">        Alumno alumno = null;</span>
+<span class="nc" id="L107">        alumno = alumnosModelo.buscar(dni);</span>
+<span class="nc" id="L108">        return alumno;</span>
+    }
+
+    /**
+     * Funcion encargada de verificar si existe el alumno
+     * 
+     * @param alumno a comprobar
+     * @return true si existe o false si no existe
+     */
+    public boolean existe(Alumno alumno) {
+<span class="nc" id="L118">        boolean encontrado = false;</span>
+        Alumno alumnoEncontrado;
+
+<span class="nc" id="L121">        alumnoEncontrado = buscar(alumno.getDni());</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">        if (alumnoEncontrado != null) {</span>
+<span class="nc" id="L123">            encontrado = true;</span>
+        }
+<span class="nc" id="L125">        return encontrado;</span>
+    }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

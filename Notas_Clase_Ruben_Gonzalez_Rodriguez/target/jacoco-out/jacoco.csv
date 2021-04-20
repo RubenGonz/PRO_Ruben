@@ -1,12 +1,12 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.modelo,NotaModelo,0,3,0,0,0,2,0,1,0,1
 Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.modelo,NotasModelo,3,0,0,0,1,0,1,0,1,0
-Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.modelo,AlumnosModelo,3,0,0,0,1,0,1,0,1,0
-Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.modelo,AlumnoModelo,0,3,0,0,0,2,0,1,0,1
+Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.modelo,AlumnosModelo,40,8,2,0,9,3,6,1,5,1
+Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.modelo,AlumnoModelo,8,0,0,0,6,0,5,0,5,0
 Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.excepcion,NotaException,5,4,0,0,2,2,1,1,1,1
 Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.excepcion,AlumnoException,5,4,0,0,2,2,1,1,1,1
 Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.api,Nota,5,55,4,4,2,18,4,8,0,8
 Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.api,Alumno,5,92,6,6,2,29,6,12,0,12
 Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.vista,App,7,0,0,0,3,0,2,0,2,0
 Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.controlador,NotaController,0,44,1,9,0,14,1,6,0,2
-Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.controlador,AlumnoController,0,68,4,16,0,18,4,8,0,2
+Notas_Clase_Ruben_Gonzalez_Rodriguez,es.iespuertolacruz.rubengonzalezrodriguez.controlador,AlumnoController,72,68,12,16,23,18,13,8,5,2
