@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Divisa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ConversorDivisa_RubenGonzalezRodriguez</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.api</a> &gt; <span class="el_source">Divisa.java</span></div><h1>Divisa.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.api;
+
+import java.util.Objects;
+
+public class Divisa {
+    
+    //Variables de clase
+
+    String codigo;
+    Float valor;
+
+    /**
+     * Constructor por defecto de la divisa
+     */
+<span class="fc" id="L15">    public Divisa() {</span>
+<span class="fc" id="L16">    }</span>
+
+    /**
+     * Constructor con parametros de la divisa
+     * @param codigo siglas de la divisa distintivas
+     * @param valor de esa divisa comparado con los euros
+     */
+<span class="fc" id="L23">    public Divisa(String codigo, Float valor) {</span>
+<span class="fc" id="L24">        this.codigo = codigo;</span>
+<span class="fc" id="L25">        this.valor = valor;</span>
+<span class="fc" id="L26">    }</span>
+
+    //Getters and Setters
+
+    public String getCodigo() {
+<span class="fc" id="L31">        return this.codigo;</span>
+    }
+
+    public void setCodigo(String codigo) {
+<span class="fc" id="L35">        this.codigo = codigo;</span>
+<span class="fc" id="L36">    }</span>
+
+    public Float getValor() {
+<span class="fc" id="L39">        return this.valor;</span>
+    }
+
+    public void setValor(Float valor) {
+<span class="fc" id="L43">        this.valor = valor;</span>
+<span class="fc" id="L44">    }</span>
+
+    //Metodos y funciones
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if (o == this)</span>
+<span class="nc" id="L51">            return true;</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        if (!(o instanceof Divisa)) {</span>
+<span class="nc" id="L53">            return false;</span>
+        }
+<span class="fc" id="L55">        Divisa divisa = (Divisa) o;</span>
+<span class="pc bpc" id="L56" title="2 of 4 branches missed.">        return Objects.equals(codigo, divisa.codigo) &amp;&amp; Objects.equals(valor, divisa.valor);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L61">        return &quot;Codigo = &quot; + getCodigo() +</span>
+<span class="fc" id="L62">            &quot;, valor = &quot; + getValor();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
