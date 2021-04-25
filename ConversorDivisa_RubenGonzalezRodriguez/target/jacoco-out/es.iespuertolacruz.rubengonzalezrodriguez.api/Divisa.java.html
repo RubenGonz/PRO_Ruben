@@ -2,6 +2,9 @@
 
 import java.util.Objects;
 
+/**
+ * Clase principal de la divisa
+ */
 public class Divisa {
     
     //Variables de clase
@@ -12,54 +15,54 @@ public class Divisa {
     /**
      * Constructor por defecto de la divisa
      */
-<span class="fc" id="L15">    public Divisa() {</span>
-<span class="fc" id="L16">    }</span>
+<span class="fc" id="L18">    public Divisa() {</span>
+<span class="fc" id="L19">    }</span>
 
     /**
      * Constructor con parametros de la divisa
      * @param codigo siglas de la divisa distintivas
      * @param valor de esa divisa comparado con los euros
      */
-<span class="fc" id="L23">    public Divisa(String codigo, Float valor) {</span>
-<span class="fc" id="L24">        this.codigo = codigo;</span>
-<span class="fc" id="L25">        this.valor = valor;</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L26">    public Divisa(String codigo, Float valor) {</span>
+<span class="fc" id="L27">        this.codigo = codigo;</span>
+<span class="fc" id="L28">        this.valor = valor;</span>
+<span class="fc" id="L29">    }</span>
 
     //Getters and Setters
 
     public String getCodigo() {
-<span class="fc" id="L31">        return this.codigo;</span>
+<span class="fc" id="L34">        return this.codigo;</span>
     }
 
     public void setCodigo(String codigo) {
-<span class="fc" id="L35">        this.codigo = codigo;</span>
-<span class="fc" id="L36">    }</span>
+<span class="fc" id="L38">        this.codigo = codigo;</span>
+<span class="fc" id="L39">    }</span>
 
     public Float getValor() {
-<span class="fc" id="L39">        return this.valor;</span>
+<span class="fc" id="L42">        return this.valor;</span>
     }
 
     public void setValor(Float valor) {
-<span class="fc" id="L43">        this.valor = valor;</span>
-<span class="fc" id="L44">    }</span>
+<span class="fc" id="L46">        this.valor = valor;</span>
+<span class="fc" id="L47">    }</span>
 
     //Metodos y funciones
 
     @Override
     public boolean equals(Object o) {
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if (o == this)</span>
-<span class="nc" id="L51">            return true;</span>
-<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        if (!(o instanceof Divisa)) {</span>
-<span class="nc" id="L53">            return false;</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if (o == this)</span>
+<span class="nc" id="L54">            return true;</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">        if (!(o instanceof Divisa)) {</span>
+<span class="nc" id="L56">            return false;</span>
         }
-<span class="fc" id="L55">        Divisa divisa = (Divisa) o;</span>
-<span class="pc bpc" id="L56" title="2 of 4 branches missed.">        return Objects.equals(codigo, divisa.codigo) &amp;&amp; Objects.equals(valor, divisa.valor);</span>
+<span class="fc" id="L58">        Divisa divisa = (Divisa) o;</span>
+<span class="pc bpc" id="L59" title="2 of 4 branches missed.">        return Objects.equals(codigo, divisa.codigo) &amp;&amp; Objects.equals(valor, divisa.valor);</span>
     }
 
     @Override
     public String toString() {
-<span class="fc" id="L61">        return &quot;Codigo = &quot; + getCodigo() +</span>
-<span class="fc" id="L62">            &quot;, valor = &quot; + getValor();</span>
+<span class="fc" id="L64">        return &quot;Codigo = &quot; + getCodigo() +</span>
+<span class="fc" id="L65">            &quot;, valor = &quot; + getValor();</span>
     }
 
 }

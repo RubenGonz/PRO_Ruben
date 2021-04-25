@@ -1,2 +1,5 @@
-es/iespuertolacruz/rubengonzalezrodriguez/vista/App.class
-es/iespuertolacruz/rubengonzalezrodriguez/api/Divisa.class
+es\iespuertolacruz\rubengonzalezrodriguez\controller\DivisaController.class
+es\iespuertolacruz\rubengonzalezrodriguez\exception\DivisaException.class
+es\iespuertolacruz\rubengonzalezrodriguez\vista\App.class
+es\iespuertolacruz\rubengonzalezrodriguez\api\Divisa.class
+es\iespuertolacruz\rubengonzalezrodriguez\modelo\DivisaModelo.class
