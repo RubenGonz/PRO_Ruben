@@ -2,6 +2,7 @@ package es.iespuertolacruz.rubengonzalezrodriguez.modelo;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 import es.iespuertolacruz.rubengonzalezrodriguez.excepcion.FicheroException;
