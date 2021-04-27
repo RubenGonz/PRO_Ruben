@@ -9,11 +9,11 @@ import es.iespuertolacruz.rubengonzalezrodriguez.modelo.DivisaModelo;
  */
 public class DivisaController {
 
-    //Variables de clase
+    // Variables de clase
 
     DivisaModelo divisaModelo;
 
-    //Constructores
+    // Constructores
 
     /**
      * Constructor por defecto
@@ -22,15 +22,129 @@ public class DivisaController {
 <span class="nc" id="L22">        divisaModelo = new DivisaModelo();</span>
 <span class="nc" id="L23">    }</span>
 
-    public void validarDivisa(Divisa divisa) throws DivisaException {
-<span class="nc" id="L26">        String mensaje = &quot;&quot;;</span>
+    // Metodos y funciones
 
-<span class="nc bnc" id="L28" title="All 2 branches missed.">        if(divisa == null) {</span>
-<span class="nc" id="L29">            mensaje = &quot;Se esta intentando validar una divisa que es nula o vacia&quot;;</span>
-<span class="nc" id="L30">            throw new DivisaException(mensaje);</span>
+    /**
+     * Metodo que valida si una divisa dada es valida
+     * 
+     * @param divisa a comprobar
+     * @throws DivisaException es nuestra excepcion propia
+     */
+    public void validarDivisa(Divisa divisa) throws DivisaException {
+<span class="nc" id="L34">        String mensaje = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if (divisa == null) {</span>
+<span class="nc" id="L37">            mensaje = &quot;Se esta intentando validar una divisa que es nula o vacia&quot;;</span>
+<span class="nc" id="L38">            throw new DivisaException(mensaje);</span>
         }
 
-        
-<span class="nc" id="L34">    }</span>
+<span class="nc bnc" id="L41" title="All 4 branches missed.">        if (divisa.getCodigo() == null || divisa.getCodigo().isEmpty()) {</span>
+<span class="nc" id="L42">            mensaje += &quot;Se esta intentando validar una divisa con codigo es nulo o vacio&quot;;</span>
+        }
+
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (divisa.getValor() &lt; 0) {</span>
+<span class="nc" id="L46">            mensaje += &quot;Se esta intentando validar una divisa con valor 0 o menor&quot;;</span>
+        }
+
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        if (!mensaje.isEmpty()) {</span>
+<span class="nc" id="L50">            throw new DivisaException(mensaje);</span>
+        }
+<span class="nc" id="L52">    }</span>
+
+    /**
+     * Metodo que inserta una divisa comprobando si es valida
+     * 
+     * @param divisa a insertar
+     * @throws DivisaException excepcion propia
+     */
+    public void insertar(Divisa divisa) throws DivisaException {
+<span class="nc" id="L61">        validarDivisa(divisa);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (existe(divisa)) {</span>
+<span class="nc" id="L63">            throw new DivisaException(&quot;La divisa indicada ya existe&quot;);</span>
+        }
+<span class="nc" id="L65">        divisaModelo.insertar(divisa);</span>
+<span class="nc" id="L66">    }</span>
+
+    /**
+     * Metodo que elimina una divisa
+     * 
+     * @param divisa a eliminar
+     * @throws DivisaException excepcion propia
+     */
+    public void eliminar(Divisa divisa) throws DivisaException {
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (!existe(divisa)) {</span>
+<span class="nc" id="L76">            throw new DivisaException(&quot;La divisa indicada no existe&quot;);</span>
+        }
+<span class="nc" id="L78">        divisaModelo.eliminar(divisa);</span>
+<span class="nc" id="L79">    }</span>
+
+    /**
+     * Funcion encargada de buscar una divisa por su codigo
+     * 
+     * @param codDivisa a buscar
+     * @return la divisa encontrada o null
+     */
+    public Divisa buscar(String codDivisa) {
+<span class="nc" id="L88">        Divisa divisa = null;</span>
+<span class="nc" id="L89">        divisa = divisaModelo.buscar(codDivisa);</span>
+<span class="nc" id="L90">        return divisa;</span>
+    }
+
+    /**
+     * Funcion encargada de comprobar si una divisa existe ya
+     * 
+     * @param divisa a comprobar
+     * @return true si existe o false si no existe
+     */
+    public boolean existe(Divisa divisa) {
+<span class="nc" id="L100">        boolean encontrada = false;</span>
+        Divisa divisaEncontrada;
+
+<span class="nc" id="L103">        divisaEncontrada = buscar(divisa.getCodigo());</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        if (divisaEncontrada != null) {</span>
+<span class="nc" id="L105">            encontrada = true;</span>
+        }
+<span class="nc" id="L107">        return encontrada;</span>
+    }
+
+    /**
+     * Funcion que devuelve el valor de una divisa
+     * 
+     * @param codDivisa a obtener
+     * @return la divisa
+     * @throws DivisaException excepcion propia
+     */
+    public Divisa obtener(String codDivisa) throws DivisaException {
+        try {
+<span class="nc" id="L119">            return divisaModelo.obtener(codDivisa);</span>
+<span class="nc" id="L120">        } catch (DivisaException e) {</span>
+<span class="nc" id="L121">            throw new DivisaException(&quot;No se ha podido obtener la divisa&quot;);</span>
+        }
+    }
+
+    /**
+     * Funcion que te convierte el valor de una divisa a otra
+     * 
+     * @param codDivisaOrigen  codigo de la divisa de origen
+     * @param codDivisaDestino codigo de la divisa de destino
+     * @param importe          valor que se quiere convertir
+     * @return valor al cambio
+     * @throws DivisaException excepcion propia
+     */
+    public float convertir(String codDivisaOrigen, String codDivisaDestino, float importe) throws DivisaException {
+        try {
+<span class="nc" id="L136">            return divisaModelo.convertir(codDivisaOrigen, codDivisaDestino, importe);</span>
+<span class="nc" id="L137">        } catch (DivisaException exception) {</span>
+<span class="nc" id="L138">            throw new DivisaException(&quot;No se ha podido convertir la divisa&quot;);</span>
+        }
+    }
+
+    /**
+     * Metodo toString
+     */
+    public String toString() {
+<span class="nc" id="L146">        return divisaModelo.toString();</span>
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

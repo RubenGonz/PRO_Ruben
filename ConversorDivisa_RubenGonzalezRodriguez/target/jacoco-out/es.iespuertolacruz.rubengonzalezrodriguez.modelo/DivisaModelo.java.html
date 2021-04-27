@@ -1,6 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DivisaModelo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ConversorDivisa_RubenGonzalezRodriguez</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.modelo</a> &gt; <span class="el_source">DivisaModelo.java</span></div><h1>DivisaModelo.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.modelo;
 
-<span class="nc" id="L3">public class DivisaModelo {</span>
-    
+import java.util.HashMap;
+
+import es.iespuertolacruz.rubengonzalezrodriguez.api.Divisa;
+import es.iespuertolacruz.rubengonzalezrodriguez.exception.DivisaException;
+
+/**
+ * Clase que guarda la informacion de las divisas y la usa
+ */
+public class DivisaModelo {
+
+    // Variables de clase
+
+    HashMap&lt;String, Divisa&gt; listaDivisas;
+
+    // Constructores
+
+    /**
+     * Constructor por defecto de DivisaModelo
+     */
+<span class="nc" id="L22">    public DivisaModelo() {</span>
+<span class="nc" id="L23">        listaDivisas = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L24">    }</span>
+
+    // Metodos y funciones
+
+    /**
+     * Metodo que inserta una divisa si no existe
+     * 
+     * @param divisa a insertar
+     * @throws DivisaException excepcion propia
+     */
+    public void insertar(Divisa divisa) throws DivisaException {
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (existe(divisa)) {</span>
+<span class="nc" id="L36">            throw new DivisaException(&quot;La divisa que intenta insertar en la lista ya esta insertada&quot;);</span>
+        }
+<span class="nc" id="L38">        listaDivisas.put(divisa.getCodigo(), divisa);</span>
+<span class="nc" id="L39">    }</span>
+
+    /**
+     * Metodo que elimina una divisa de la lista si existiese
+     * 
+     * @param divisa a eliminar
+     * @throws DivisaException excepcion propia
+     */
+    public void eliminar(Divisa divisa) throws DivisaException {
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if (!existe(divisa)) {</span>
+<span class="nc" id="L49">            throw new DivisaException(&quot;La divisa que intenta eliminar de la lista no esta insertada&quot;);</span>
+        }
+<span class="nc" id="L51">        listaDivisas.remove(divisa.getCodigo(), divisa);</span>
+<span class="nc" id="L52">    }</span>
+
+    /**
+     * Funcion que pasado un codigo te busca una divisa
+     * 
+     * @param codDivisa codigo de la divisa a buscar
+     * @return la divisa a buscar o null
+     */
+    public Divisa buscar(String codDivisa) {
+<span class="nc" id="L61">        Divisa divisa = null;</span>
+<span class="nc" id="L62">        divisa = listaDivisas.get(codDivisa);</span>
+<span class="nc" id="L63">        return divisa;</span>
+    }
+
+    /**
+     * Funcion que averigua si la divisa existe en la lista
+     * 
+     * @param divisa a comprobar
+     * @return true si existe o false si no existe
+     */
+    public boolean existe(Divisa divisa) {
+        Divisa divisaAencontrar;
+<span class="nc" id="L74">        divisaAencontrar = buscar(divisa.getCodigo());</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (divisaAencontrar != null) {</span>
+<span class="nc" id="L76">            return true;</span>
+        }
+<span class="nc" id="L78">        return false;</span>
+    }
+
+    /**
+     * Funcion que devuelve el valor de una divisa
+     * 
+     * @param codDivisa a obtener
+     * @return la divisa
+     * @throws DivisaException excepcion propia
+     */
+    public Divisa obtener(String codDivisa) throws DivisaException {
+<span class="nc" id="L89">        Divisa divisa = null;</span>
+<span class="nc" id="L90">        divisa = buscar(codDivisa);</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        if (divisa == null) {</span>
+<span class="nc" id="L92">            throw new DivisaException(&quot;La divisa que se quiere obtener no existe&quot;);</span>
+        }
+<span class="nc" id="L94">        return divisa;</span>
+    }
+
+    /**
+     * Funcion que te convierte el valor de una divisa a otra
+     * 
+     * @param codDivisaOrigen  codigo de la divisa de origen
+     * @param codDivisaDestino codigo de la divisa de destino
+     * @param importe          valor que se quiere convertir
+     * @return valor al cambio
+     * @throws DivisaException excepcion propia
+     */
+    public float convertir(String codDivisaOrigen, String codDivisaDestino, float importe) throws DivisaException {
+        float valorDividaOrigen;
+        float valorDividaDestino;
+        try {
+<span class="nc" id="L110">            valorDividaOrigen = obtener(codDivisaOrigen).getValor();</span>
+<span class="nc" id="L111">        } catch (DivisaException exception) {</span>
+<span class="nc" id="L112">            throw new DivisaException(&quot;No se le pudo dar valor a a la variable&quot;);</span>
+<span class="nc" id="L113">        }</span>
+        try {
+<span class="nc" id="L115">            valorDividaDestino = obtener(codDivisaDestino).getValor();</span>
+<span class="nc" id="L116">        } catch (DivisaException exception) {</span>
+<span class="nc" id="L117">            throw new DivisaException(&quot;No se le pudo dar valor a a la variable&quot;);</span>
+<span class="nc" id="L118">        }</span>
+<span class="nc" id="L119">        float euros = importe / valorDividaOrigen;</span>
+<span class="nc" id="L120">        return euros * valorDividaDestino;</span>
+    }
+
+    /**
+     * Metodo toString de DivisaModelo
+     */
+    public String toString() {
+<span class="nc" id="L127">        return listaDivisas.toString();</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
