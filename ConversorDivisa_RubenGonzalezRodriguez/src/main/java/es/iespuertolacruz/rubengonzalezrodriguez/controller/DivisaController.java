@@ -39,7 +39,7 @@ public class DivisaController {
         }
 
         if (divisa.getCodigo() == null || divisa.getCodigo().isEmpty()) {
-            mensaje += "Se esta intentando validar una divisa con codigo es nulo o vacio";
+            mensaje += "Se esta intentando validar una divisa con codigo nulo o vacio";
         }
 
         if (divisa.getValor() < 0) {

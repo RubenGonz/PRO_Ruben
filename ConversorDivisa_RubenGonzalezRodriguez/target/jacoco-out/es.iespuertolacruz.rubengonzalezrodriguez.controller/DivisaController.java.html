@@ -18,9 +18,9 @@ public class DivisaController {
     /**
      * Constructor por defecto
      */
-<span class="nc" id="L21">    public DivisaController() {</span>
-<span class="nc" id="L22">        divisaModelo = new DivisaModelo();</span>
-<span class="nc" id="L23">    }</span>
+<span class="fc" id="L21">    public DivisaController() {</span>
+<span class="fc" id="L22">        divisaModelo = new DivisaModelo();</span>
+<span class="fc" id="L23">    }</span>
 
     // Metodos y funciones
 
@@ -31,25 +31,25 @@ public class DivisaController {
      * @throws DivisaException es nuestra excepcion propia
      */
     public void validarDivisa(Divisa divisa) throws DivisaException {
-<span class="nc" id="L34">        String mensaje = &quot;&quot;;</span>
+<span class="fc" id="L34">        String mensaje = &quot;&quot;;</span>
 
-<span class="nc bnc" id="L36" title="All 2 branches missed.">        if (divisa == null) {</span>
-<span class="nc" id="L37">            mensaje = &quot;Se esta intentando validar una divisa que es nula o vacia&quot;;</span>
-<span class="nc" id="L38">            throw new DivisaException(mensaje);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (divisa == null) {</span>
+<span class="fc" id="L37">            mensaje = &quot;Se esta intentando validar una divisa que es nula o vacia&quot;;</span>
+<span class="fc" id="L38">            throw new DivisaException(mensaje);</span>
         }
 
-<span class="nc bnc" id="L41" title="All 4 branches missed.">        if (divisa.getCodigo() == null || divisa.getCodigo().isEmpty()) {</span>
-<span class="nc" id="L42">            mensaje += &quot;Se esta intentando validar una divisa con codigo es nulo o vacio&quot;;</span>
+<span class="pc bpc" id="L41" title="1 of 4 branches missed.">        if (divisa.getCodigo() == null || divisa.getCodigo().isEmpty()) {</span>
+<span class="fc" id="L42">            mensaje += &quot;Se esta intentando validar una divisa con codigo nulo o vacio&quot;;</span>
         }
 
-<span class="nc bnc" id="L45" title="All 2 branches missed.">        if (divisa.getValor() &lt; 0) {</span>
-<span class="nc" id="L46">            mensaje += &quot;Se esta intentando validar una divisa con valor 0 o menor&quot;;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (divisa.getValor() &lt; 0) {</span>
+<span class="fc" id="L46">            mensaje += &quot;Se esta intentando validar una divisa con valor 0 o menor&quot;;</span>
         }
 
-<span class="nc bnc" id="L49" title="All 2 branches missed.">        if (!mensaje.isEmpty()) {</span>
-<span class="nc" id="L50">            throw new DivisaException(mensaje);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (!mensaje.isEmpty()) {</span>
+<span class="fc" id="L50">            throw new DivisaException(mensaje);</span>
         }
-<span class="nc" id="L52">    }</span>
+<span class="fc" id="L52">    }</span>
 
     /**
      * Metodo que inserta una divisa comprobando si es valida
@@ -58,12 +58,12 @@ public class DivisaController {
      * @throws DivisaException excepcion propia
      */
     public void insertar(Divisa divisa) throws DivisaException {
-<span class="nc" id="L61">        validarDivisa(divisa);</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (existe(divisa)) {</span>
-<span class="nc" id="L63">            throw new DivisaException(&quot;La divisa indicada ya existe&quot;);</span>
+<span class="fc" id="L61">        validarDivisa(divisa);</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if (existe(divisa)) {</span>
+<span class="fc" id="L63">            throw new DivisaException(&quot;La divisa indicada ya existe&quot;);</span>
         }
-<span class="nc" id="L65">        divisaModelo.insertar(divisa);</span>
-<span class="nc" id="L66">    }</span>
+<span class="fc" id="L65">        divisaModelo.insertar(divisa);</span>
+<span class="fc" id="L66">    }</span>
 
     /**
      * Metodo que elimina una divisa
@@ -72,11 +72,11 @@ public class DivisaController {
      * @throws DivisaException excepcion propia
      */
     public void eliminar(Divisa divisa) throws DivisaException {
-<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (!existe(divisa)) {</span>
-<span class="nc" id="L76">            throw new DivisaException(&quot;La divisa indicada no existe&quot;);</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        if (!existe(divisa)) {</span>
+<span class="fc" id="L76">            throw new DivisaException(&quot;La divisa indicada no existe&quot;);</span>
         }
-<span class="nc" id="L78">        divisaModelo.eliminar(divisa);</span>
-<span class="nc" id="L79">    }</span>
+<span class="fc" id="L78">        divisaModelo.eliminar(divisa);</span>
+<span class="fc" id="L79">    }</span>
 
     /**
      * Funcion encargada de buscar una divisa por su codigo
@@ -85,9 +85,9 @@ public class DivisaController {
      * @return la divisa encontrada o null
      */
     public Divisa buscar(String codDivisa) {
-<span class="nc" id="L88">        Divisa divisa = null;</span>
-<span class="nc" id="L89">        divisa = divisaModelo.buscar(codDivisa);</span>
-<span class="nc" id="L90">        return divisa;</span>
+<span class="fc" id="L88">        Divisa divisa = null;</span>
+<span class="fc" id="L89">        divisa = divisaModelo.buscar(codDivisa);</span>
+<span class="fc" id="L90">        return divisa;</span>
     }
 
     /**
@@ -97,14 +97,14 @@ public class DivisaController {
      * @return true si existe o false si no existe
      */
     public boolean existe(Divisa divisa) {
-<span class="nc" id="L100">        boolean encontrada = false;</span>
+<span class="fc" id="L100">        boolean encontrada = false;</span>
         Divisa divisaEncontrada;
 
-<span class="nc" id="L103">        divisaEncontrada = buscar(divisa.getCodigo());</span>
-<span class="nc bnc" id="L104" title="All 2 branches missed.">        if (divisaEncontrada != null) {</span>
-<span class="nc" id="L105">            encontrada = true;</span>
+<span class="fc" id="L103">        divisaEncontrada = buscar(divisa.getCodigo());</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        if (divisaEncontrada != null) {</span>
+<span class="fc" id="L105">            encontrada = true;</span>
         }
-<span class="nc" id="L107">        return encontrada;</span>
+<span class="fc" id="L107">        return encontrada;</span>
     }
 
     /**
@@ -116,9 +116,9 @@ public class DivisaController {
      */
     public Divisa obtener(String codDivisa) throws DivisaException {
         try {
-<span class="nc" id="L119">            return divisaModelo.obtener(codDivisa);</span>
-<span class="nc" id="L120">        } catch (DivisaException e) {</span>
-<span class="nc" id="L121">            throw new DivisaException(&quot;No se ha podido obtener la divisa&quot;);</span>
+<span class="fc" id="L119">            return divisaModelo.obtener(codDivisa);</span>
+<span class="fc" id="L120">        } catch (DivisaException e) {</span>
+<span class="fc" id="L121">            throw new DivisaException(&quot;No se ha podido obtener la divisa&quot;);</span>
         }
     }
 
@@ -133,9 +133,9 @@ public class DivisaController {
      */
     public float convertir(String codDivisaOrigen, String codDivisaDestino, float importe) throws DivisaException {
         try {
-<span class="nc" id="L136">            return divisaModelo.convertir(codDivisaOrigen, codDivisaDestino, importe);</span>
-<span class="nc" id="L137">        } catch (DivisaException exception) {</span>
-<span class="nc" id="L138">            throw new DivisaException(&quot;No se ha podido convertir la divisa&quot;);</span>
+<span class="fc" id="L136">            return divisaModelo.convertir(codDivisaOrigen, codDivisaDestino, importe);</span>
+<span class="fc" id="L137">        } catch (DivisaException exception) {</span>
+<span class="fc" id="L138">            throw new DivisaException(&quot;No se ha podido convertir la divisa&quot;);</span>
         }
     }
 
@@ -143,7 +143,7 @@ public class DivisaController {
      * Metodo toString
      */
     public String toString() {
-<span class="nc" id="L146">        return divisaModelo.toString();</span>
+<span class="fc" id="L146">        return divisaModelo.toString();</span>
     }
 
 }

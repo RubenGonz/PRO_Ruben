@@ -1,6 +1,7 @@
 package es.iespuertolacruz.rubengonzalezrodriguez.modelo;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import es.iespuertolacruz.rubengonzalezrodriguez.api.Divisa;
 import es.iespuertolacruz.rubengonzalezrodriguez.exception.DivisaException;
@@ -21,6 +22,12 @@ public class DivisaModelo {
      */
     public DivisaModelo() {
         listaDivisas = new HashMap<>();
+    }
+
+    //Getter
+
+    public Map<String,Divisa> getListaDivisas() {
+        return this.listaDivisas;
     }
 
     // Metodos y funciones
@@ -120,10 +127,9 @@ public class DivisaModelo {
         return euros * valorDividaDestino;
     }
 
-    /**
-     * Metodo toString de DivisaModelo
-     */
+    @Override
     public String toString() {
-        return listaDivisas.toString();
+        return "ListaDivisas = " + getListaDivisas();
     }
+
 }
