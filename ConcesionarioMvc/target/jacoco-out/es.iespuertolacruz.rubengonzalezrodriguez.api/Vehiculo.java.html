@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vehiculo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ConcesionarioMvc</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.api</a> &gt; <span class="el_source">Vehiculo.java</span></div><h1>Vehiculo.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.api;
+
+import java.util.Objects;
+
+/**
+ * Clase principal de vehiculo
+ */
+public class Vehiculo {
+    
+    //Variables de clase
+    String matricula;
+    String marca;
+
+    //Constructores
+
+    /**
+     * Constructor por defecto de vehiculo
+     */
+<span class="fc" id="L19">    public Vehiculo() {</span>
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * Constructor con todos los parametros de vehiculo
+     * @param matricula del vehiculo
+     * @param marca del vehiculo
+     */
+<span class="fc" id="L27">    public Vehiculo(String matricula, String marca) {</span>
+<span class="fc" id="L28">        this.matricula = matricula;</span>
+<span class="fc" id="L29">        this.marca = marca;</span>
+<span class="fc" id="L30">    }</span>
+
+    //Getters ans Setters
+
+    public String getMatricula() {
+<span class="fc" id="L35">        return this.matricula;</span>
+    }
+
+    public void setMatricula(String matricula) {
+<span class="fc" id="L39">        this.matricula = matricula;</span>
+<span class="fc" id="L40">    }</span>
+
+    public String getMarca() {
+<span class="fc" id="L43">        return this.marca;</span>
+    }
+
+    public void setMarca(String marca) {
+<span class="fc" id="L47">        this.marca = marca;</span>
+<span class="fc" id="L48">    }</span>
+
+    //Funciones y metodos
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if (o == this)</span>
+<span class="nc" id="L55">            return true;</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if (!(o instanceof Vehiculo)) {</span>
+<span class="nc" id="L57">            return false;</span>
+        }
+<span class="fc" id="L59">        Vehiculo vehiculo = (Vehiculo) o;</span>
+<span class="pc bpc" id="L60" title="2 of 4 branches missed.">        return Objects.equals(matricula, vehiculo.matricula) &amp;&amp; Objects.equals(marca, vehiculo.marca);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L65">        return &quot;Matricula = &quot; + getMatricula() +</span>
+<span class="fc" id="L66">            &quot;, marca = &quot; + getMarca();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

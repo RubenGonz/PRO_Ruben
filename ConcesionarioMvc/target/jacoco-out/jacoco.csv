@@ -1,0 +1,3 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.api,Vehiculo,5,56,4,4,2,18,4,8,0,8
+ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.vista,App,7,0,0,0,3,0,2,0,2,0

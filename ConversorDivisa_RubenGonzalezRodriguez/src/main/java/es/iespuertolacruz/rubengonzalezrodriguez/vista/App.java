@@ -96,6 +96,8 @@ public class App {
                 e.printStackTrace();
             }
         }
+
+        scanner.close();
     }
 
     private static Divisa nuevaDivisa() {
@@ -106,6 +108,7 @@ public class App {
         divisa.setCodigo(scanner.next());
         System.out.println("Inserte el valor de la divisa comparado al euro");
         divisa.setValor(scanner.nextFloat());
+        scanner.close();
         return divisa;
     }
 }
