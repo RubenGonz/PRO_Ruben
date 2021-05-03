@@ -1,2 +1,7 @@
-es/iespuertolacruz/rubengonzalezrodriguez/vista/App.class
-es/iespuertolacruz/rubengonzalezrodriguez/api/Vehiculo.class
+es\iespuertolacruz\rubengonzalezrodriguez\modelo\VehiculoModelo.class
+es\iespuertolacruz\rubengonzalezrodriguez\vista\App.class
+es\iespuertolacruz\rubengonzalezrodriguez\api\Vehiculo.class
+es\iespuertolacruz\rubengonzalezrodriguez\excepciones\FicheroException.class
+es\iespuertolacruz\rubengonzalezrodriguez\controller\VehiculoController.class
+es\iespuertolacruz\rubengonzalezrodriguez\excepciones\VehiculoException.class
+es\iespuertolacruz\rubengonzalezrodriguez\modelo\Fichero.class

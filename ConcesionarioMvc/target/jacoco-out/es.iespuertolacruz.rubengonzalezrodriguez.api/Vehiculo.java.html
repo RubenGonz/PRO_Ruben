@@ -1,69 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vehiculo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ConcesionarioMvc</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.api</a> &gt; <span class="el_source">Vehiculo.java</span></div><h1>Vehiculo.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.api;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.StringTokenizer;
 
 /**
  * Clase principal de vehiculo
  */
 public class Vehiculo {
-    
-    //Variables de clase
+
+    private static final String DELIMITADOR = &quot;,&quot;;
+
+    // Variables de clase
+
     String matricula;
     String marca;
 
-    //Constructores
+    // Constructores
 
     /**
      * Constructor por defecto de vehiculo
      */
-<span class="fc" id="L19">    public Vehiculo() {</span>
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L24">    public Vehiculo() {</span>
+<span class="fc" id="L25">    }</span>
 
     /**
      * Constructor con todos los parametros de vehiculo
+     * 
      * @param matricula del vehiculo
-     * @param marca del vehiculo
+     * @param marca     del vehiculo
      */
-<span class="fc" id="L27">    public Vehiculo(String matricula, String marca) {</span>
-<span class="fc" id="L28">        this.matricula = matricula;</span>
-<span class="fc" id="L29">        this.marca = marca;</span>
-<span class="fc" id="L30">    }</span>
+<span class="fc" id="L33">    public Vehiculo(String matricula, String marca) {</span>
+<span class="fc" id="L34">        this.matricula = matricula;</span>
+<span class="fc" id="L35">        this.marca = marca;</span>
+<span class="fc" id="L36">    }</span>
 
-    //Getters ans Setters
+<span class="fc" id="L38">    public Vehiculo(String cadena) {</span>
+<span class="fc" id="L39">        ArrayList&lt;Object&gt; elementos = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L40">        StringTokenizer tokenizer = new StringTokenizer(cadena, DELIMITADOR);</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        while (tokenizer.hasMoreElements()) {</span>
+<span class="fc" id="L42">            elementos.add(tokenizer.nextToken());</span>
+        }
+<span class="fc" id="L44">        this.matricula = (String) elementos.get(0);</span>
+<span class="fc" id="L45">        this.marca = (String) elementos.get(1);</span>
+
+<span class="fc" id="L47">    }</span>
+
+    // Getters ans Setters
 
     public String getMatricula() {
-<span class="fc" id="L35">        return this.matricula;</span>
+<span class="fc" id="L52">        return this.matricula;</span>
     }
 
     public void setMatricula(String matricula) {
-<span class="fc" id="L39">        this.matricula = matricula;</span>
-<span class="fc" id="L40">    }</span>
+<span class="fc" id="L56">        this.matricula = matricula;</span>
+<span class="fc" id="L57">    }</span>
 
     public String getMarca() {
-<span class="fc" id="L43">        return this.marca;</span>
+<span class="fc" id="L60">        return this.marca;</span>
     }
 
     public void setMarca(String marca) {
-<span class="fc" id="L47">        this.marca = marca;</span>
-<span class="fc" id="L48">    }</span>
+<span class="fc" id="L64">        this.marca = marca;</span>
+<span class="fc" id="L65">    }</span>
 
-    //Funciones y metodos
+    // Funciones y metodos
 
     @Override
     public boolean equals(Object o) {
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if (o == this)</span>
-<span class="nc" id="L55">            return true;</span>
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if (!(o instanceof Vehiculo)) {</span>
-<span class="nc" id="L57">            return false;</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if (o == this)</span>
+<span class="nc" id="L72">            return true;</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">        if (!(o instanceof Vehiculo)) {</span>
+<span class="nc" id="L74">            return false;</span>
         }
-<span class="fc" id="L59">        Vehiculo vehiculo = (Vehiculo) o;</span>
-<span class="pc bpc" id="L60" title="2 of 4 branches missed.">        return Objects.equals(matricula, vehiculo.matricula) &amp;&amp; Objects.equals(marca, vehiculo.marca);</span>
+<span class="fc" id="L76">        Vehiculo vehiculo = (Vehiculo) o;</span>
+<span class="pc bpc" id="L77" title="2 of 4 branches missed.">        return Objects.equals(matricula, vehiculo.matricula) &amp;&amp; Objects.equals(marca, vehiculo.marca);</span>
     }
 
     @Override
     public String toString() {
-<span class="fc" id="L65">        return &quot;Matricula = &quot; + getMatricula() +</span>
-<span class="fc" id="L66">            &quot;, marca = &quot; + getMarca();</span>
+<span class="fc" id="L82">        return getMatricula() + DELIMITADOR + getMarca();</span>
     }
 
 }

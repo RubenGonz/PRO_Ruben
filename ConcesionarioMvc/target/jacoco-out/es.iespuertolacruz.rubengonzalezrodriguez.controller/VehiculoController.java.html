@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VehiculoController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ConcesionarioMvc</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.controller</a> &gt; <span class="el_source">VehiculoController.java</span></div><h1>VehiculoController.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.controller;
+
+import es.iespuertolacruz.rubengonzalezrodriguez.api.Vehiculo;
+import es.iespuertolacruz.rubengonzalezrodriguez.excepciones.FicheroException;
+import es.iespuertolacruz.rubengonzalezrodriguez.excepciones.VehiculoException;
+import es.iespuertolacruz.rubengonzalezrodriguez.modelo.VehiculoModelo;
+
+/**
+ * Constrolador de la clase Vehiculo
+ */
+public class VehiculoController {
+
+    // Variables de clase
+
+    VehiculoModelo vehiculoModelo;
+
+    // Constructores
+
+<span class="fc" id="L19">    public VehiculoController() {</span>
+<span class="fc" id="L20">        vehiculoModelo = new VehiculoModelo();</span>
+<span class="fc" id="L21">    }</span>
+
+    // Metodos y funciones
+
+    /**
+     * Metodo que valida un vehiculo
+     * 
+     * @param vehiculo a validar
+     * @throws VehiculoException excepcion propia
+     */
+    public void validar(Vehiculo vehiculo) throws VehiculoException {
+<span class="fc" id="L32">        String mensaje = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (vehiculo == null) {</span>
+<span class="fc" id="L35">            mensaje = &quot;El vehiculo es nulo&quot;;</span>
+<span class="fc" id="L36">            throw new VehiculoException(mensaje);</span>
+        }
+
+<span class="pc bpc" id="L39" title="1 of 4 branches missed.">        if (vehiculo.getMatricula() == null || vehiculo.getMatricula().isEmpty()) {</span>
+<span class="fc" id="L40">            mensaje = &quot;La matricla del vehiculo es nula o vacia, &quot;;</span>
+        }
+<span class="pc bpc" id="L42" title="1 of 4 branches missed.">        if (vehiculo.getMarca() == null || vehiculo.getMarca().isEmpty()) {</span>
+<span class="fc" id="L43">            mensaje += &quot;La marca del vehiculo es nula o vacia.&quot;;</span>
+        }
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if (!mensaje.isEmpty()) {</span>
+<span class="fc" id="L47">            throw new VehiculoException(mensaje);</span>
+        }
+<span class="fc" id="L49">    }</span>
+
+    public void insertar(Vehiculo vehiculo) throws VehiculoException, FicheroException {
+<span class="nc" id="L52">        validar(vehiculo);</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if (existe(vehiculo)) {</span>
+<span class="nc" id="L54">            throw new VehiculoException(&quot;El vehiculo indicado ya existe&quot;);</span>
+        }
+<span class="nc" id="L56">        vehiculoModelo.insertar(vehiculo);</span>
+<span class="nc" id="L57">    }</span>
+
+    public void eliminar(Vehiculo vehiculo) throws VehiculoException, FicheroException {
+<span class="nc" id="L60">        validar(vehiculo);</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">        if (!existe(vehiculo)) {</span>
+<span class="nc" id="L62">            throw new VehiculoException(&quot;El vehiculo indicado no existe&quot;);</span>
+        }
+<span class="nc" id="L64">        vehiculoModelo.eliminar(vehiculo);</span>
+<span class="nc" id="L65">    }</span>
+
+    public void eliminar(String matricula) throws VehiculoException, FicheroException {
+        Vehiculo vehiculo;
+<span class="nc" id="L69">        vehiculo = buscar(matricula);</span>
+<span class="nc" id="L70">        eliminar(vehiculo);</span>
+<span class="nc" id="L71">    }</span>
+
+    public Vehiculo buscar(String matricula) throws FicheroException {
+<span class="nc" id="L74">        Vehiculo vehiculo = null;</span>
+<span class="nc" id="L75">        vehiculo = vehiculoModelo.buscar(matricula);</span>
+<span class="nc" id="L76">        return vehiculo;</span>
+    }
+
+    public void modificar(Vehiculo vehiculo) throws VehiculoException, FicheroException {
+        Vehiculo vehiculoAlmacenado;
+
+<span class="nc" id="L82">        validar(vehiculo);</span>
+<span class="nc" id="L83">        vehiculoAlmacenado = buscar(vehiculo.getMatricula());</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (vehiculoAlmacenado == null) {</span>
+<span class="nc" id="L85">            throw new VehiculoException(&quot;El vehiculo indicado no existe&quot;);</span>
+        }
+<span class="nc" id="L87">        vehiculoModelo.modificar(vehiculoAlmacenado, vehiculo);</span>
+<span class="nc" id="L88">    }</span>
+
+    private boolean existe(Vehiculo vehiculo) throws FicheroException {
+<span class="nc" id="L91">        boolean encontrado = false;</span>
+        Vehiculo vehiculoEncontrado;
+
+<span class="nc" id="L94">        vehiculoEncontrado = buscar(vehiculo.getMatricula());</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        if (vehiculoEncontrado != null) {</span>
+<span class="nc" id="L96">            encontrado = true;</span>
+        }
+<span class="nc" id="L98">        return encontrado;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

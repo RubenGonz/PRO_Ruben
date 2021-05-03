@@ -1,3 +1,8 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.api,Vehiculo,5,56,4,4,2,18,4,8,0,8
+ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.modelo,Fichero,241,3,16,0,79,1,17,1,9,1
+ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.modelo,VehiculoModelo,48,8,6,0,14,3,7,1,4,1
+ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.excepciones,VehiculoException,5,4,0,0,2,2,1,1,1,1
+ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.excepciones,FicheroException,9,0,0,0,4,0,2,0,2,0
+ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.api,Vehiculo,5,90,4,6,2,25,4,10,0,9
 ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.vista,App,7,0,0,0,3,0,2,0,2,0
+ConcesionarioMvc,es.iespuertolacruz.rubengonzalezrodriguez.controller,VehiculoController,85,47,10,10,27,14,12,6,6,2

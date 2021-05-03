@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import es.iespuertolacruz.rubengonzalezrodriguez.api.Vehiculo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 
@@ -34,7 +36,21 @@ public class VehiculoTest {
 
     @Test
     public void toStringTest() {
-        assertEquals("Matricula = 5992 HLJ, marca = Opel", vehiculo1.toString(), "El mensaje recibido no es el esperado");
+        assertEquals("5992 HLJ,Opel", vehiculo1.toString(), "El mensaje recibido no es el esperado");
+    }
+
+    @Test
+    public void transformarStringToObjectTest() {
+        Vehiculo vehiculoParseado = null;
+        String texto = vehiculo1.toString();
+        try {
+            vehiculoParseado = new Vehiculo(texto);
+        } catch (Exception exception) {
+            fail("Se ha producido un error realizando la transformacion a objeto: " + exception.getMessage());
+        }
+        assertNotNull(vehiculoParseado, "El elemento fruta no puede ser nulo");
+        assertEquals("5992 HLJ", vehiculoParseado.getMatricula(), "El identificar obtenido es incorrecto");
+        assertEquals("Opel", vehiculoParseado.getMarca(), "La marca obtenida es incorrecta");
     }
 
     //Metodos y funciones de clase

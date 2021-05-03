@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>VehiculoModelo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ConcesionarioMvc</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.modelo</a> &gt; <span class="el_source">VehiculoModelo.java</span></div><h1>VehiculoModelo.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.modelo;
+
+import java.util.ArrayList;
+
+import es.iespuertolacruz.rubengonzalezrodriguez.api.Vehiculo;
+import es.iespuertolacruz.rubengonzalezrodriguez.excepciones.FicheroException;
+
+public class VehiculoModelo {
+
+    // Variables de clase
+
+    Fichero fichero;
+
+    // Constructores
+
+    /**
+     * Constructor por defecto con fichero inicializado
+     */
+<span class="fc" id="L19">    public VehiculoModelo() {</span>
+<span class="fc" id="L20">        fichero = new Fichero();</span>
+<span class="fc" id="L21">    }</span>
+
+    // Metodos y funciones
+
+    public void insertar(Vehiculo vehiculo) throws FicheroException {
+<span class="nc" id="L26">        fichero.insertar(vehiculo);</span>
+<span class="nc" id="L27">    }</span>
+
+    public void eliminar(Vehiculo vehiculo) throws FicheroException {
+<span class="nc" id="L30">        fichero.eliminar(vehiculo);</span>
+<span class="nc" id="L31">    }</span>
+
+    public Vehiculo buscar(String matricula) throws FicheroException {
+<span class="nc" id="L34">        Vehiculo vehiculo = null;</span>
+        ArrayList&lt;Vehiculo&gt; listaVehiculos;
+<span class="nc" id="L36">        listaVehiculos = (ArrayList&lt;Vehiculo&gt;) fichero.obtenerListado();</span>
+<span class="nc" id="L37">        int i = 0;</span>
+<span class="nc bnc" id="L38" title="All 4 branches missed.">        while (i &lt; listaVehiculos.size() &amp;&amp; vehiculo == null) {</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">            if (matricula.equals(listaVehiculos.get(i).getMatricula())) {</span>
+<span class="nc" id="L40">                vehiculo = listaVehiculos.get(i);</span>
+            }
+<span class="nc" id="L42">            i++;</span>
+        }
+<span class="nc" id="L44">        return vehiculo;</span>
+    }
+
+    public void modificar(Vehiculo vehiculoAlmacenado, Vehiculo vehiculo) throws FicheroException {
+<span class="nc" id="L48">        fichero.modificar(vehiculoAlmacenado, vehiculo);</span>
+<span class="nc" id="L49">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
