@@ -1,6 +1,5 @@
 package es.iespuertolacruz.rubengonzalezrodriguez;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -10,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import es.iespuertolacruz.rubengonzalezrodriguez.api.Vehiculo;
 import es.iespuertolacruz.rubengonzalezrodriguez.controller.VehiculoController;
-import es.iespuertolacruz.rubengonzalezrodriguez.excepciones.FicheroException;
 import es.iespuertolacruz.rubengonzalezrodriguez.excepciones.VehiculoException;
 
 public class VehiculoControllerTest {
