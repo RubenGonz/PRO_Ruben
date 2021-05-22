@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Persona.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CensoPoblacion</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.api</a> &gt; <span class="el_source">Persona.java</span></div><h1>Persona.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.api;
+
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.StringTokenizer;
+
+public class Persona {
+
+    // Variables de clase
+
+    private static final String DELIMITADOR = &quot;'&quot;;
+    String dni;
+    String nombre;
+    String fechaNacimiento;
+    String direccion;
+    int telefono;
+
+    // Constructores
+
+    /**
+     * Constructor por defecto
+     */
+<span class="fc" id="L23">    public Persona() {</span>
+<span class="fc" id="L24">    }</span>
+
+    /**
+     * Constructor con todos los parametros
+     * 
+     * @param dni             de la persona
+     * @param nombre          de la persona
+     * @param fechaNacimiento de la persona
+     * @param direccion       de la persona
+     * @param telefono        de la persona
+     */
+<span class="fc" id="L35">    public Persona(String dni, String nombre, String fechaNacimiento, String direccion, int telefono) {</span>
+<span class="fc" id="L36">        this.dni = dni;</span>
+<span class="fc" id="L37">        this.nombre = nombre;</span>
+<span class="fc" id="L38">        this.fechaNacimiento = fechaNacimiento;</span>
+<span class="fc" id="L39">        this.direccion = direccion;</span>
+<span class="fc" id="L40">        this.telefono = telefono;</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * Constructor que recibe una cadena de texto
+     * 
+     * @param cadena con la informacion
+     */
+<span class="fc" id="L48">    public Persona(String cadena) {</span>
+<span class="fc" id="L49">        ArrayList&lt;Object&gt; elementos = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L50">        StringTokenizer tokenizer = new StringTokenizer(cadena, DELIMITADOR);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        while (tokenizer.hasMoreElements()) {</span>
+<span class="fc" id="L52">            elementos.add(tokenizer.nextToken());</span>
+        }
+<span class="fc" id="L54">        this.dni = (String) elementos.get(0);</span>
+<span class="fc" id="L55">        this.nombre = (String) elementos.get(1);</span>
+<span class="fc" id="L56">        this.fechaNacimiento = (String) elementos.get(2);</span>
+<span class="fc" id="L57">        this.direccion = (String) elementos.get(3);</span>
+<span class="fc" id="L58">        this.telefono = Integer.parseInt((String) elementos.get(4));</span>
+<span class="fc" id="L59">    }</span>
+
+    // Getters and Setters
+
+    public String getDni() {
+<span class="fc" id="L64">        return this.dni;</span>
+    }
+
+    public void setDni(String dni) {
+<span class="fc" id="L68">        this.dni = dni;</span>
+<span class="fc" id="L69">    }</span>
+
+    public String getNombre() {
+<span class="fc" id="L72">        return this.nombre;</span>
+    }
+
+    public void setNombre(String nombre) {
+<span class="fc" id="L76">        this.nombre = nombre;</span>
+<span class="fc" id="L77">    }</span>
+
+    public String getFechaNacimiento() {
+<span class="fc" id="L80">        return this.fechaNacimiento;</span>
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+<span class="fc" id="L84">        this.fechaNacimiento = fechaNacimiento;</span>
+<span class="fc" id="L85">    }</span>
+
+    public String getDireccion() {
+<span class="fc" id="L88">        return this.direccion;</span>
+    }
+
+    public void setDireccion(String direccion) {
+<span class="fc" id="L92">        this.direccion = direccion;</span>
+<span class="fc" id="L93">    }</span>
+
+    public int getTelefono() {
+<span class="fc" id="L96">        return this.telefono;</span>
+    }
+
+    public void setTelefono(int telefono) {
+<span class="fc" id="L100">        this.telefono = telefono;</span>
+<span class="fc" id="L101">    }</span>
+
+    // Funciones y metodos
+
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">        if (o == this)</span>
+<span class="nc" id="L108">            return true;</span>
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">        if (!(o instanceof Persona)) {</span>
+<span class="nc" id="L110">            return false;</span>
+        }
+<span class="fc" id="L112">        Persona persona = (Persona) o;</span>
+<span class="pc bpc" id="L113" title="2 of 4 branches missed.">        return Objects.equals(dni, persona.dni) &amp;&amp; Objects.equals(nombre, persona.nombre)</span>
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">                &amp;&amp; Objects.equals(fechaNacimiento, persona.fechaNacimiento)</span>
+<span class="pc bpc" id="L115" title="2 of 4 branches missed.">                &amp;&amp; Objects.equals(direccion, persona.direccion) &amp;&amp; telefono == persona.telefono;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L120">        return getDni() + DELIMITADOR + </span>
+<span class="fc" id="L121">        getNombre() + DELIMITADOR + </span>
+<span class="fc" id="L122">        getFechaNacimiento() + DELIMITADOR + </span>
+<span class="fc" id="L123">        getDireccion() + DELIMITADOR + </span>
+<span class="fc" id="L124">        getTelefono();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

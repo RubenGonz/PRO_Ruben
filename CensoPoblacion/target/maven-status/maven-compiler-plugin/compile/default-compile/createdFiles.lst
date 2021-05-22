@@ -1,0 +1,8 @@
+es\iespuertolacruz\rubengonzalezrodriguez\modelo\DdBb.class
+es\iespuertolacruz\rubengonzalezrodriguez\api\Persona.class
+es\iespuertolacruz\rubengonzalezrodriguez\excepciones\CensoException.class
+es\iespuertolacruz\rubengonzalezrodriguez\modelo\PersonaModelo.class
+es\iespuertolacruz\rubengonzalezrodriguez\controller\PersonaController.class
+es\iespuertolacruz\rubengonzalezrodriguez\excepciones\PersistenciaException.class
+es\iespuertolacruz\rubengonzalezrodriguez\vista\AppCensoPoblacion.class
+es\iespuertolacruz\rubengonzalezrodriguez\modelo\DdBbSqLite.class

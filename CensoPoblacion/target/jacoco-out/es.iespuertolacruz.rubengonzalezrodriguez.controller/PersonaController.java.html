@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersonaController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CensoPoblacion</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.controller</a> &gt; <span class="el_source">PersonaController.java</span></div><h1>PersonaController.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.controller;
+
+import es.iespuertolacruz.rubengonzalezrodriguez.api.Persona;
+import es.iespuertolacruz.rubengonzalezrodriguez.excepciones.CensoException;
+import es.iespuertolacruz.rubengonzalezrodriguez.excepciones.PersistenciaException;
+import es.iespuertolacruz.rubengonzalezrodriguez.modelo.PersonaModelo;
+
+public class PersonaController {
+
+    // Variables de clase
+
+    PersonaModelo personaModelo;
+
+    // Constructores
+
+<span class="fc" id="L16">    public PersonaController() throws PersistenciaException {</span>
+<span class="fc" id="L17">        personaModelo = new PersonaModelo();</span>
+<span class="fc" id="L18">    }</span>
+
+    // Funcioens y metodos
+
+    /**
+     * Metodo encargado de realizar la validacion del objeto persona
+     * 
+     * @param persona a validar
+     * @throws PersonaException con el mensaje descriptivo de lo que sucede
+     */
+    public void validarPersona(Persona persona) throws CensoException {
+<span class="fc" id="L29">        String mensaje = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (persona == null) {</span>
+<span class="fc" id="L32">            mensaje = &quot;Se esta validando un objeto nulo&quot;;</span>
+<span class="fc" id="L33">            throw new CensoException(mensaje);</span>
+        }
+
+<span class="pc bpc" id="L36" title="1 of 4 branches missed.">        if (persona.getDni() == null || persona.getDni().isEmpty()) {</span>
+<span class="fc" id="L37">            mensaje = &quot;El dni de la persona es nulo o vacio, &quot;;</span>
+        }
+
+<span class="pc bpc" id="L40" title="1 of 4 branches missed.">        if (persona.getNombre() == null || persona.getNombre().isEmpty()) {</span>
+<span class="fc" id="L41">            mensaje += &quot;el nombre de la persona es nulo o vacio, &quot;;</span>
+        }
+
+<span class="pc bpc" id="L44" title="1 of 4 branches missed.">        if (persona.getFechaNacimiento() == null || persona.getFechaNacimiento().isEmpty()) {</span>
+<span class="fc" id="L45">            mensaje += &quot;la fecha de nacimiento de la persona es nula o vacia, &quot;;</span>
+        }
+
+<span class="pc bpc" id="L48" title="1 of 4 branches missed.">        if (persona.getDireccion() == null || persona.getDireccion().isEmpty()) {</span>
+<span class="fc" id="L49">            mensaje += &quot;la direccion de la persona es nula o vacia, &quot;;</span>
+        }
+
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (persona.getTelefono() &lt;= 0) {</span>
+<span class="fc" id="L53">            mensaje += &quot;el telefono de la persona es 0 o menor.&quot;;</span>
+        }
+        
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (!mensaje.isEmpty()) {</span>
+<span class="fc" id="L57">            throw new CensoException(mensaje);</span>
+        }
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Metodo encargado de insertar
+     * 
+     * @param persona a insertar
+     * @throws CensoException        con mensaje controlado
+     * @throws PersistenciaException con mensaje controlado
+     */
+    public void insertar(Persona persona) throws CensoException, PersistenciaException {
+<span class="fc" id="L69">        validarPersona(persona);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (existe(persona)) {</span>
+<span class="fc" id="L71">            throw new CensoException(&quot;La persona indicada ya existe&quot;);</span>
+        }
+<span class="fc" id="L73">        personaModelo.insertar(persona);</span>
+<span class="fc" id="L74">    }</span>
+
+    /**
+     * Metodo encargado de eliminar
+     * 
+     * @param persona a eliminar
+     * @throws CensoException        con mensaje controlado
+     * @throws PersistenciaException con mensaje controlado
+     */
+    public void eliminar(Persona persona) throws CensoException, PersistenciaException {
+<span class="fc" id="L84">        validarPersona(persona);</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if (!existe(persona)) {</span>
+<span class="fc" id="L86">            throw new CensoException(&quot;La persona indicada no existe&quot;);</span>
+        }
+<span class="fc" id="L88">        personaModelo.eliminar(persona);</span>
+<span class="fc" id="L89">    }</span>
+
+    /**
+     * Meotod encargado de realiza la eliminacion
+     * 
+     * @param dni del elemento a eliminar
+     * @throws CensoException        con mensaje controlado
+     * @throws PersistenciaException con mensaje controlado
+     */
+    public void eliminar(String dni) throws CensoException, PersistenciaException {
+        Persona persona;
+<span class="fc" id="L100">        persona = buscar(dni);</span>
+<span class="fc" id="L101">        eliminar(persona);</span>
+<span class="fc" id="L102">    }</span>
+
+    /**
+     * Metodo encargado de buscar por el dni
+     * 
+     * @param dni para localizar la persona
+     * @return persona a traves del dni
+     * @throws PersistenciaException con mensaje controlado
+     */
+    public Persona buscar(String dni) throws PersistenciaException {
+<span class="fc" id="L112">        Persona persona = null;</span>
+<span class="fc" id="L113">        persona = personaModelo.buscar(dni);</span>
+<span class="fc" id="L114">        return persona;</span>
+    }
+
+    /**
+     * Metodo encargado de realizar la modificacion de una persona
+     * 
+     * @param persona a modficar
+     * @throws CensoException        con mensaje controlado
+     * @throws PersistenciaException con mensaje controlado
+     */
+    public void modificar(Persona persona) throws CensoException, PersistenciaException {
+
+<span class="fc" id="L126">        validarPersona(persona);</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">        if (!existe(persona)) {</span>
+<span class="fc" id="L128">            throw new CensoException(&quot;La persona indicada no existe&quot;);</span>
+        }
+<span class="fc" id="L130">        personaModelo.modificar(persona);</span>
+<span class="fc" id="L131">    }</span>
+
+    /**
+     * Funcion encargada de verificar si existe la persona
+     * 
+     * @param persona a encontrar
+     * @return true si existe o false si no existe
+     * @throws PersistenciaException con mensaje controlado
+     */
+    private boolean existe(Persona persona) throws PersistenciaException {
+<span class="fc" id="L141">        boolean encontrada = false;</span>
+        Persona personaEncontrada;
+
+<span class="fc" id="L144">        personaEncontrada = buscar(persona.getDni());</span>
+<span class="fc bfc" id="L145" title="All 2 branches covered.">        if (personaEncontrada != null) {</span>
+<span class="fc" id="L146">            encontrada = true;</span>
+        }
+<span class="fc" id="L148">        return encontrada;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

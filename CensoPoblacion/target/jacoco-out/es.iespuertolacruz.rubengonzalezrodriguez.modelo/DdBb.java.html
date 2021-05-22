@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DdBb.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CensoPoblacion</a> &gt; <a href="index.source.html" class="el_package">es.iespuertolacruz.rubengonzalezrodriguez.modelo</a> &gt; <span class="el_source">DdBb.java</span></div><h1>DdBb.java</h1><pre class="source lang-java linenums">package es.iespuertolacruz.rubengonzalezrodriguez.modelo;
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import es.iespuertolacruz.rubengonzalezrodriguez.api.Persona;
+import es.iespuertolacruz.rubengonzalezrodriguez.excepciones.PersistenciaException;
+
+public class DdBb {
+
+    // Variables de clase
+
+    private static final String TABLE = &quot;TABLE&quot;;
+
+    protected String nombreTabla;
+    protected String clave;
+    protected String driver;
+    protected String urlConexion;
+    protected String usuario;
+    protected String password;
+
+    // Constructor
+
+    public DdBb(String nombreTabla, String clave, String driver, String urlConexion, String usuario,
+<span class="fc" id="L31">            String password) throws PersistenciaException {</span>
+<span class="fc" id="L32">        this.nombreTabla = nombreTabla;</span>
+<span class="fc" id="L33">        this.clave = clave;</span>
+<span class="fc" id="L34">        this.driver = driver;</span>
+<span class="fc" id="L35">        this.urlConexion = urlConexion;</span>
+<span class="fc" id="L36">        this.usuario = usuario;</span>
+<span class="fc" id="L37">        this.password = password;</span>
+<span class="fc" id="L38">        inicializarTabla(nombreTabla);</span>
+<span class="fc" id="L39">    }</span>
+
+    private void inicializarTabla(String tabla) throws PersistenciaException {
+        DatabaseMetaData databaseMetaData;
+<span class="fc" id="L43">        Connection connection = null;</span>
+<span class="fc" id="L44">        ResultSet resultSet = null;</span>
+<span class="fc" id="L45">        ArrayList&lt;String&gt; listaTablas = new ArrayList&lt;&gt;();</span>
+        try {
+<span class="fc" id="L47">            connection = getConnection();</span>
+<span class="fc" id="L48">            databaseMetaData = connection.getMetaData();</span>
+<span class="fc" id="L49">            resultSet = databaseMetaData.getTables(null, null, null, new String[] { TABLE });</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">            while (resultSet.next()) {</span>
+<span class="fc" id="L51">                listaTablas.add(resultSet.getString(&quot;TABLE_NAME&quot;));</span>
+            }
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            if (!listaTablas.contains(tabla)) {</span>
+<span class="nc" id="L54">                String sqlCrearTabla = &quot;CREATE TABLE IF NOT EXISTS PERSONA( &quot; + </span>
+                &quot;DNI VARCHAR, &quot; + 
+                &quot;NOMBRE VARCHAR, &quot; +
+                &quot;FECNAC VARCHAR, &quot; +
+                &quot;DIR VARCHAR, &quot; +
+                &quot;TFNO VARCHAR, &quot; +
+                &quot;PRIMARY KEY (DNI));&quot;;
+<span class="nc" id="L61">                update(sqlCrearTabla);</span>
+            }
+<span class="nc" id="L63">        } catch (Exception e) {</span>
+<span class="nc" id="L64">            throw new PersistenciaException(&quot;Se ha producido un error en la inicializacion de la BBDD&quot;, e);</span>
+        } finally {
+<span class="fc" id="L66">            closeConecction(connection, null, resultSet);</span>
+        }
+<span class="fc" id="L68">    }</span>
+
+    /**
+     * Funcion encargada de realizar la conexion con la BBDD
+     * 
+     * @return conexion abierta
+     * @throws PersistenciaException
+     */
+    public Connection getConnection() throws PersistenciaException {
+<span class="fc" id="L77">        Connection connection = null;</span>
+
+        try {
+<span class="fc" id="L80">            Class.forName(driver);</span>
+<span class="pc bpc" id="L81" title="3 of 4 branches missed.">            if (usuario != null &amp;&amp; password != null) {</span>
+<span class="nc" id="L82">                connection = DriverManager.getConnection(urlConexion, usuario, password);</span>
+            } else {
+<span class="fc" id="L84">                connection = DriverManager.getConnection(urlConexion);</span>
+            }
+<span class="nc" id="L86">        } catch (ClassNotFoundException | SQLException exception) {</span>
+<span class="nc" id="L87">            throw new PersistenciaException(&quot;No se ha podido estabalecer la conexion&quot;, exception);</span>
+<span class="fc" id="L88">        }</span>
+
+<span class="fc" id="L90">        return connection;</span>
+    }
+
+    /**
+     * Funcion encargada de obtener un objeto
+     * 
+     * @param identificador del objeto
+     * @return Objeto 
+     * @throws PersistenciaException
+     */
+    public Object buscarElemento(String identificador) throws PersistenciaException {
+<span class="fc" id="L101">        Object elemento = null;</span>
+<span class="fc" id="L102">        String sql = &quot;SELECT * FROM &quot; + this.nombreTabla + &quot; WHERE &quot; + this.clave + &quot; = '&quot; + identificador + &quot;';&quot;;</span>
+<span class="fc" id="L103">        ArrayList&lt;Object&gt; lista = buscar(sql);</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        if (!lista.isEmpty()) {</span>
+<span class="fc" id="L105">            elemento = lista.get(0);</span>
+        }
+<span class="fc" id="L107">        return elemento;</span>
+    }
+
+    /**
+     * Funcion que obtiene todos los usuarios de la BBDD
+     * 
+     * @return lista usuarios
+     * @throws PersistenciaException error controlado
+     */
+    public ArrayList&lt;Object&gt; buscarTodos() throws PersistenciaException {
+<span class="nc" id="L117">        String sql = &quot;SELECT * FROM &quot; + this.nombreTabla + &quot;;&quot;;</span>
+<span class="nc" id="L118">        return buscar(sql);</span>
+    }
+
+    /**
+     * Funcion que realiza una consulta sobre una sentencia sql dada
+     * 
+     * @param sql de la consulta
+     * @return lista resultados (0..n) Personas
+     * @throws PersistenciaException error controlado
+     */
+    private ArrayList&lt;Object&gt; buscar(String sql) throws PersistenciaException {
+<span class="fc" id="L129">        ArrayList&lt;Object&gt; lista = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L130">        PreparedStatement statement = null;</span>
+<span class="fc" id="L131">        ResultSet resultSet = null;</span>
+<span class="fc" id="L132">        Connection connection = null;</span>
+        try {
+<span class="fc" id="L134">            connection = getConnection();</span>
+<span class="fc" id="L135">            statement = connection.prepareStatement(sql);</span>
+<span class="fc" id="L136">            resultSet = statement.executeQuery();</span>
+
+<span class="fc bfc" id="L138" title="All 2 branches covered.">            while (resultSet.next()) {</span>
+<span class="fc" id="L139">                Persona persona = new Persona();</span>
+<span class="fc" id="L140">                persona.setDni(resultSet.getString(&quot;DNI&quot;));</span>
+<span class="fc" id="L141">                persona.setNombre(resultSet.getString(&quot;NOMBRE&quot;));</span>
+<span class="fc" id="L142">                persona.setFechaNacimiento(resultSet.getString(&quot;FECNAC&quot;));</span>
+<span class="fc" id="L143">                persona.setDireccion(resultSet.getString(&quot;DIR&quot;));</span>
+<span class="fc" id="L144">                persona.setTelefono(resultSet.getInt(&quot;TFNO&quot;));</span>
+<span class="fc" id="L145">                lista.add(persona);</span>
+<span class="fc" id="L146">            }</span>
+<span class="nc" id="L147">        } catch (SQLException exception) {</span>
+<span class="nc" id="L148">            throw new PersistenciaException(&quot;Se ha producido un error al buscar&quot;, exception);</span>
+        } finally {
+<span class="fc" id="L150">            closeConecction(connection, statement, resultSet);</span>
+        }
+<span class="fc" id="L152">        return lista;</span>
+    }
+
+    /**
+     * Metodo encargado de realizar las inserciones/modificaciones/eliminacion de la
+     * BBDD
+     * 
+     * @param sql con la sentencia
+     * @throws PersistenciaException error controlado
+     */
+    public void update(String sql) throws PersistenciaException {
+<span class="fc" id="L163">        PreparedStatement statement = null;</span>
+<span class="fc" id="L164">        Connection connection = null;</span>
+        try {
+<span class="fc" id="L166">            connection = getConnection();</span>
+<span class="fc" id="L167">            statement = connection.prepareStatement(sql);</span>
+<span class="fc" id="L168">            statement.executeUpdate();</span>
+<span class="nc" id="L169">        } catch (SQLException exception) {</span>
+<span class="nc" id="L170">            throw new PersistenciaException(&quot;Se ha producido un error en la busqueda&quot;, exception);</span>
+        } finally {
+<span class="fc" id="L172">            closeConecction(connection, statement, null);</span>
+        }
+<span class="fc" id="L174">    }</span>
+
+    /**
+     * Metodo encargado de realizar el cierre de la conexion con la BBDD
+     * 
+     * @param connection contra la BBDD
+     * @param statement  de la operacion
+     * @param resultSet  resultado
+     * @throws PersistenciaException error controlado
+     */
+    private void closeConecction(Connection connection, Statement statement, ResultSet resultSet)
+            throws PersistenciaException {
+        try {
+<span class="fc bfc" id="L187" title="All 2 branches covered.">            if (resultSet != null) {</span>
+<span class="fc" id="L188">                resultSet.close();</span>
+            }
+<span class="fc bfc" id="L190" title="All 2 branches covered.">            if (statement != null) {</span>
+<span class="fc" id="L191">                statement.close();</span>
+            }
+<span class="pc bpc" id="L193" title="1 of 2 branches missed.">            if (connection != null) {</span>
+<span class="fc" id="L194">                connection.close();</span>
+            }
+<span class="nc" id="L196">        } catch (Exception e) {</span>
+<span class="nc" id="L197">            throw new PersistenciaException(&quot;Se ha producido un error cerrando la sesion con la BBDD&quot;);</span>
+<span class="fc" id="L198">        }</span>
+<span class="fc" id="L199">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
